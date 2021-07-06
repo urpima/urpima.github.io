@@ -79,6 +79,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Schedules
     Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('schedules.massDestroy');
     Route::resource('schedules', 'ScheduleController');
+// Schedule2s
+Route::delete('schedule2s/destroy', 'Schedule2Controller@massDestroy')->name('schedule2s.massDestroy');
+Route::resource('schedule2s', 'Schedule2Controller');
 
     // Venues
     Route::delete('venues/destroy', 'VenuesController@massDestroy')->name('venues.massDestroy');

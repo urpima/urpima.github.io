@@ -151,6 +151,16 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.schedule2s.index") }}" class="nav-link {{ request()->is('admin/schedule2s') || request()->is('admin/schedule2s/*') ? 'active' : '' }}">
+                            <i class="fa-fw far fa-clock">
+
+                            </i>
+                            <p>
+                                <span>SousAxes</span>
+                            </p>
+                        </a>
+                    </li>
 
 
                     <li class="nav-item">

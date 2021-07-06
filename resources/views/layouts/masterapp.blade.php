@@ -190,7 +190,7 @@ a:focus {
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <div class="footer-logo">
+                <div class="footer-logo Poryt">
                   <h2> <img src="images/LOGOFc.png" alt=""></h2>
                 </div>
 

@@ -34,8 +34,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
-
-    // Roles
+   // Roles
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
     Route::resource('roles', 'RolesController');
 
@@ -49,10 +48,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('posts', 'PagesController');
 
     
-    // Settings
-    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
-    Route::resource('settings', 'SettingsController');
-
+      
+      // Publications
+      Route::delete('publications/destroy', 'PublicationsController@massDestroy')->name('publications.massDestroy');
+      Route::resource('publications', 'PublicationsController');
+   
+       // Settings
+       Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+       Route::resource('settings', 'SettingsController');
+   // projets
+   Route::delete('projets/destroy', 'projetsController@massDestroy')->name('projets.massDestroy');
+   Route::resource('projets', 'projetsController');
+   // axes
+   Route::delete('axes/destroy', 'AxesController@massDestroy')->name('axes.massDestroy');
+   Route::resource('axes', 'AxesController');
+   // Sousaxes
+   Route::delete('sousaxes/destroy', 'SousaxesController@massDestroy')->name('sousaxes.massDestroy');
+   Route::resource('sousaxes', 'SousaxesController');
+   
     // Speakers
     Route::delete('speakers/destroy', 'SpeakersController@massDestroy')->name('speakers.massDestroy');
     Route::post('speakers/media', 'SpeakersController@storeMedia')->name('speakers.storeMedia');

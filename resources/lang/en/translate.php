@@ -1,0 +1,40 @@
+<?php
+return [
+    'search'=>'Search' ,
+  // 'generatereport'=>'generate report',
+    'home'=>'Home',
+    'teams'=>'Teams',
+    'AXES'=>'Axes',
+    'publication'=>'Publications',
+    'PROJECTS'=>'Projects',
+    'seminar'=>'Seminars',
+    'galleries'=>'Galleries',
+    'activities'=>'Research Activities',
+    'lang2'=>'English',
+    'lang'=>'lang',
+    'site'=>'Site intéressant',
+   'unite'=>'The "URPIMA" research unit is a research unit located within the Department of Quantitative Methods and Computing in the premises of ISCAE. The mission of the research unit is to contribute to the supervision of Masters and Doctorate students, to the creation, dissemination and promotion of research in the field of applied mathematics and computer science. It also ensures the link between research, training and the environment of the establishment.
+
+   In addition, the unit is also an innovation hub and seeks to strengthen technology transfer and accelerate the transition to digital for the benefit of local state or private institutions.
+   ',
+   'searchinfo'=>'Search information',
+   'Othersite'=>'Other site',
+   'contact'=>'Contact',
+   'contactus'=>'Contact-us',
+   'OURPARTNERS'=>'OUR PARTNERS',
+    'signin'=>'Sign in',
+    'reset_password'=>'Reset password',
+    'logout'=>'Logout',
+   // 'CONSULTATION'=>'CONSULTATION',
+    'DOCUMENTATION'=>'DOCUMENTATION',
+    'ADDSETTINGS'=>'Add Setting',
+    'MEMBERMANAGEMENT'=>'Member Mangment',
+    'ADDARTICLES'=>'Articles',
+    'login'=>'Login',
+    'E-MailAddress'=>'E-Mail Address',
+    'password'=>'Password',
+    'RememberMe'=>'Remember Me',
+    'ForgotPassword'=>'Forgot Password?',
+    'OurSpecialTeam'=>'Our Special Members',
+    'ContactUs'=>'Contact Us'
+];

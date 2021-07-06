@@ -34,7 +34,15 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
+  <style>
+    a:hover,
+a:active,
+a:focus {
+  color: #3ec1d5;
+  outline: none;
+  text-decoration: none;
+}
+    </style>
    <!-- ======= Slider Section ======= -->
    <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
@@ -119,78 +127,61 @@
         </div>
       </div>
     </div>
-  </div>
-
-<!-- End Slider -->
+  </div><!-- End Slider -->
 </head>
 <body data-spy="scroll" data-target="#navbar-example">
 @yield('content')
  <!-- ======= Header ======= -->
  <header id="header" class="fixed-top">
-    <div class="container d-flex">
-
-      <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><img src="images/LOSI.png" alt=""></a></h1>
+ <div class="logo mr-auto">
+        <h1 class="text-light"><a href="home"> <img align="left" src="images/LOBE.png" alt="" width="130px" heigth="130px"></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-      
+ 
+    
+    </div>
+        
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+     
+     
+      <nav class="nav-menu d-none d-lg-block" align="right">
+        <ul >
+        <li class="menu-active">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li> <li class="menu-active"> <a href="/master">{{__('translate.home')}}</a></li>
+          <li><a href="/Services">{{__('translate.teams')}}</a></li>
+          <li><a href="/Services">{{__('translate.publication')}}</a></li> 
+          <li><a href="/semin">{{__('translate.seminar')}}</a></li>  
+          <li><a href="/Services">{{__('translate.activities')}}</a></li>
+          <li><a href="/Team">{{__('translate.PROJECTS')}}</a></li>
+          <li><a href="/Team">{{__('translate.galleries')}}  </a></li>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/Services">Services</a></li>
-          <li><a href="/Team">Team</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="/semin">Seminaire</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="{{ route('login') }}">Singin</a></li>
-          @guest
-       
-                            @if (Route::has('login'))
-        <li><a class="nav-link scrollto active" href="{{ route('login') }}">
-
-                                  <span class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></span>
-                                  {{__('translate.signin')}}
-                              </a></li>
-        <li>     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                              @endif
-                              @endguest
-          
+          <li><a class="nav-link scrollto" href="/contact">{{__('translate.contact')}}</a></li>
+          <li><a href="{{ route('login') }}"> {{__('translate.signin')}}</a></li>
+          <li  class="drop-down"><a href="#"><span>{{app()->getLocale() }}</span> <i class="bi bi-chevron-down"></i></a>
+         <ul>
+         @foreach (language()->allowed() as $code => $name)
+         <li align="left">
+    <a href="{{ language()->back($code) }}">{{ $name }}</a></li>
+@endforeach
+                              </ul>
+                              
+            </li>
         </ul>
-      </nav>
-<!-- .nav-menu -->
+      </nav><!-- .nav-menu -->
+
     </div>
   </header><!-- End Header -->
+  
+ 
+ 
   </main><!-- End #main -->
+
   <!-- ======= Footer ======= -->
   <footer>
     <div class="footer-area">
@@ -200,7 +191,7 @@
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h2><span>e</span>Business</h2>
+                  <h2> <img src="images/LOGOFc.png" alt=""></h2>
                 </div>
 
                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
@@ -224,17 +215,13 @@
             </div>
           </div>
           <!-- end single footer -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-4">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>information</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
+                <h4>{{__('translate.contactus')}}</h4>
                 <div class="footer-contacts">
-                  <p><span>Tel:</span> +123 456 789</p>
-                  <p><span>Email:</span> contact@example.com</p>
-                  <p><span>Working Hours:</span> 9am-5pm</p>
+                  <p><span>BP:</span> 6093 – Nouakchott – Mauritanie</p>
+                  <p><span>Tel:</span> +222 45 24 19 66 </p>
                 </div>
               </div>
             </div>
@@ -243,11 +230,12 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="footer-content">
               <div class="footer-head">
-                <h4>Instagram</h4>
+             
+                  <h4>{{__('translate.OURPARTNERS')}} </h4>
                 <div class="flicker-img">
-                  <a href="#"><img src="assets/img/portfolio/1.jpg" alt=""></a>
-                  <a href="#"><img src="assets/img/portfolio/2.jpg" alt=""></a>
-                  <a href="#"><img src="assets/img/portfolio/3.jpg" alt=""></a>
+                  <a href="#"><img src="assets/img/portfolio/iscae.JPG" alt=""></a>
+                  <a href="#"><img src="assets/img/portfolio/logo.svg" alt=""></a>
+                  <a href="#"><img src="assets/img/portfolio/U.N.A.jpg" alt=""></a>
                   <a href="#"><img src="assets/img/portfolio/4.jpg" alt=""></a>
                   <a href="#"><img src="assets/img/portfolio/5.jpg" alt=""></a>
                   <a href="#"><img src="assets/img/portfolio/6.jpg" alt=""></a>

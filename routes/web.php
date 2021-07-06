@@ -1,4 +1,5 @@
 <?php
+Route::group(['middleware' => 'language'], function () {
 Route::get('/master', function () {
     return view('master');
 });
@@ -97,4 +98,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Prices
     Route::delete('prices/destroy', 'PricesController@massDestroy')->name('prices.massDestroy');
     Route::resource('prices', 'PricesController');
+});
 });

@@ -42,6 +42,17 @@ a:focus {
   outline: none;
   text-decoration: none;
 }
+.bg-light {
+    background-color: transparent!important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    /* background-color: #007bff; */
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    /*color: rgb(102, 97, 97);
+    background-color: #007bff;*/
+}
     </style>
    <!-- ======= Slider Section ======= -->
    <div id="home" class="slider-area">
@@ -145,7 +156,10 @@ a:focus {
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
      
      
-      <nav class="nav-menu d-none d-lg-block" align="right">
+      <nav class="nav-menu d-none d-lg-block navbar navbar-expand-lg navbar-light bg-light" align="right">
+       
+        
+        
         <ul >
         <li class="menu-active">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -153,18 +167,20 @@ a:focus {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </li> <li class="menu-active"> <a href="/master">{{__('translate.home')}}</a></li>
-          <li><a href="/Services">{{__('translate.teams')}}</a></li>
-          <li><a href="/Services">{{__('translate.publication')}}</a></li> 
-          <li><a href="/semin">{{__('translate.seminar')}}</a></li>  
-          <li><a href="/Services">{{__('translate.activities')}}</a></li>
-          <li><a href="/Team">{{__('translate.PROJECTS')}}</a></li>
-          <li><a href="/Team">{{__('translate.galleries')}}  </a></li>
-
+        </li> <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.teams')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.publication')}}</a></li> 
+          <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
+          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.PROJECTS')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.galleries')}}  </a></li>
+        
           <li><a class="nav-link scrollto" href="/contact">{{__('translate.contact')}}</a></li>
           <li><a href="{{ route('login') }}"> {{__('translate.signin')}}</a></li>
           <li  class="drop-down"><a href="#"><span>{{app()->getLocale() }}</span> <i class="bi bi-chevron-down"></i></a>
          <ul>
+
+         
          @foreach (language()->allowed() as $code => $name)
          <li align="left">
     <a href="{{ language()->back($code) }}">{{ $name }}</a></li>

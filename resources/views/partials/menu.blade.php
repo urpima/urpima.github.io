@@ -120,7 +120,26 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.axes.index") }}" class="nav-link {{ request()->is('admin/axes') || request()->is('admin/axes/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
 
+                            </i>
+                            <p>
+                                <span>Axes</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.projets.index") }}" class="nav-link {{ request()->is('admin/projets') || request()->is('admin/projets/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>Projets</span>
+                            </p>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route("admin.schedules.index") }}" class="nav-link {{ request()->is('admin/schedules') || request()->is('admin/schedules/*') ? 'active' : '' }}">

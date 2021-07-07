@@ -56,7 +56,7 @@ return [
         'excel'         => 'Excel',
         'pdf'           => 'PDF',
         'print'         => 'Print',
-        'colvis'        => 'Column visibility',
+        'colvis'        => 'Cacher Colonnes',
         'delete'        => 'Delete selected',
         'zero_selected' => 'No rows selected',
     ],

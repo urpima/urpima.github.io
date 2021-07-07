@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (app()->isLocale('ar') ? 'rtl' : 'ltr') }}" class="ltr">
 
 <head>
   <meta charset="utf-8">
@@ -34,7 +34,34 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<style>
+  /* rtl:begin:options: {
+  "autoRename": true,
+  "stringMap":[
+    "name": "ltr-rtl",
+    "priority": 100,
+    "search": ["ltr"],
+    "replace": ["rtl"],
+    "options": {
+      "scope": "*",
+      "ignoreCase": false
+    }
+  ]
+} */
+.ltr {
+    @import "~bootstrap/scss/bootstrap";
+}
+/*rtl:end:options*/
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
     a:hover,
 a:active,
 a:focus {
@@ -53,7 +80,17 @@ a:focus {
     /*color: rgb(102, 97, 97);
     background-color: #007bff;*/
 }
+
+/*body {
+  direction: rtl;
+}*/
     </style>
+
+    @if(app()->getLocale() == 'en')
+    <link rel="stylesheet" href="css/ltr-app.css">
+    @else
+    <link rel="stylesheet" href="css/rtl-app.css">
+@endif
    <!-- ======= Slider Section ======= -->
    <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
@@ -141,6 +178,7 @@ a:focus {
   </div><!-- End Slider -->
 </head>
 <body data-spy="scroll" data-target="#navbar-example">
+  
 @yield('content')
  <!-- ======= Header ======= -->
  <header id="header" class="fixed-top">
@@ -156,18 +194,22 @@ a:focus {
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
      
      
-      <nav class="nav-menu d-none d-lg-block navbar navbar-expand-lg navbar-light bg-light" align="right">
-       
+      <nav class="nav-menu d-none d-lg-block navbar navbar-expand-lg navbar-light bg-light">
+       <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active"  data-toggle="pill1" href="/" role="tab" aria-controls="pills-home" aria-selected="true">{{__('translate.home')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  data-toggle="pill2" href="/Services" role="tab" aria-controls="pills-profile" aria-selected="false">{{__('translate.teams')}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  data-toggle="pill3" href="/semin" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('translate.seminar')}}</a>
+          </li>
+        </ul>-->
         
         
-        <ul >
-        <li class="menu-active">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </li> <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
+        <ul>
+         <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.teams')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.publication')}}</a></li> 
           <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
@@ -180,6 +222,7 @@ a:focus {
           <li  class="drop-down"><a href="#"><span>{{app()->getLocale() }}</span> <i class="bi bi-chevron-down"></i></a>
          <ul>
 
+          
          
          @foreach (language()->allowed() as $code => $name)
          <li align="left">
@@ -190,11 +233,12 @@ a:focus {
             </li>
         </ul>
       </nav><!-- .nav-menu -->
-
+      
     </div>
   </header><!-- End Header -->
   
- 
+  
+
  
   </main><!-- End #main -->
 

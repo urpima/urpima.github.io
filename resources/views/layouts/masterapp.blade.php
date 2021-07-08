@@ -169,7 +169,7 @@ a:focus {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </li> <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.teams')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.publication')}}</a></li> 
+          <li><a class=" nav-link " aria-selected="false" href="/publication">{{__('translate.publication')}}</a></li> 
           <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.PROJECTS')}}</a></li>

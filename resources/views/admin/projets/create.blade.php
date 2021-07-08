@@ -52,7 +52,7 @@
                 <select name="id_member" id="user" class="form-control select2" >
              
              @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($axe) && $axe->user ? $axe->user->id : old('id_member')) == $id ? 'selected' : '' }}>{{ $user }}</option>
+                 <option value="{{ $id }}" {{ (isset($projet) && $projet->user ? $axe->user->id : old('id_member')) == $id ? 'selected' : '' }}>{{ $user }}</option>
              @endforeach
          </select>
                 

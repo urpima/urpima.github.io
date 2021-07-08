@@ -1,4 +1,5 @@
 <?php
+
 Route::group(['middleware' => 'language'], function () {
 Route::get('/master', function () {
     return view('master');
@@ -12,6 +13,11 @@ Route::get('/Services', function () {
 Route::get('/about', function () {
     return view('about');
 });
+//contact
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::post('/send-contact', [App\Http\Controllers\ContactController::class, 'sendEmail'])->name('contact.send');
 
 Route::get('/posts', 'PagesController@posts');
 Route::get('/posts/{post}', 'PagesController@post');
@@ -23,6 +29,7 @@ Route::get('/category/{name}', 'PagesController@category');
 
 Route::get('/', 'HomeController@index')->name('master');
 Route::get('/semin', 'seminController@index')->name('semin');
+Route::get('/publication', 'PublicationController@index')->name('publication');
 Route::get('/Team', 'TeamController@index')->name('Team');
 Route::get('/posts', 'PagesController@posts')->name('posts');
 Route::get('/semin/speaker/{speaker}', 'HomeController@view')->name('speaker');
@@ -50,8 +57,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     
       
       // Publications
-      Route::delete('publications/destroy', 'PublicationsController@massDestroy')->name('publications.massDestroy');
-      Route::resource('publications', 'PublicationsController');
+      Route::delete('publications/destroy', 'PublicationController@massDestroy')->name('publications.massDestroy');
+      Route::resource('publications', 'PublicationController');
    
        // Settings
        Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');

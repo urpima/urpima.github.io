@@ -140,7 +140,16 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.publications.index") }}" class="nav-link {{ request()->is('admin/publications') || request()->is('admin/publications/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
 
+                            </i>
+                            <p>
+                                <span>Publications</span>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route("admin.schedules.index") }}" class="nav-link {{ request()->is('admin/schedules') || request()->is('admin/schedules/*') ? 'active' : '' }}">
                             <i class="fa-fw far fa-clock">

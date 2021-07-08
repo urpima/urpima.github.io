@@ -83,17 +83,7 @@
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.cherches.index") }}" class="nav-link {{ request()->is('admin/cherches') || request()->is('admin/cherches/*') ? 'active' : '' }}">
-                                        <i class="fa-fw fas fa-user">
-
-                                        </i>
-                                        <p>
-                                            <span>{{ trans('cruds.user.title') }}</span>
-                                        </p>
-                                    </a>
-                                </li>
-
+                                
                         </ul>
                     </li>
 

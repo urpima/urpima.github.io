@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div style="margin-bottom: 10px;" class="row">
+    <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.users.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
@@ -141,8 +141,8 @@
             </table>
         </div>
     </div>
-    
-
+</div>
+@endsection
 @section('styles')
 <style>
 .dataTables_scrollBody, .dataTables_wrapper {
@@ -194,6 +194,7 @@
     }
   }
   dtButtons.push(deleteButton)
+
 
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],

@@ -40,11 +40,7 @@ class SpeakersController extends Controller
             $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
         }*/
 
-        return redirect()->route('admin.speakers.index')->with(Swal.fire(
-            'Excellent!',
-            'Ajouter Avec Succes!',
-            'success'
-          ));
+        return redirect()->route('admin.speakers.index');
     }
 
     public function edit(Speaker $speaker)

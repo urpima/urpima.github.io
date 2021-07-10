@@ -177,7 +177,8 @@
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.publications.show', $publication->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
-                             
+                                    <a href="{{ url('/images',$publication->fichier )}}" class="btn btn-xs btn-primary"><i class="icon-download-alt"> Telechager le Fichier </i>  </a>
+
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.publications.edit', $publication->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>

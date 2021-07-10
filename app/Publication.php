@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Publication extends Model
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+class Publication extends Model  implements Searchable
 {
     use SoftDeletes;
 
@@ -47,5 +48,16 @@ class Publication extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'auteur');
+    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('publication', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->titre,
+           
+            $url
+        );
     }
 }

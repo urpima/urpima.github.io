@@ -13,8 +13,9 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
-class User extends Authenticatable implements HasMedia
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+class User extends Authenticatable implements HasMedia ,Searchable
 {
     use SoftDeletes, Notifiable, HasApiTokens, InteractsWithMedia;
 
@@ -76,5 +77,15 @@ class User extends Authenticatable implements HasMedia
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('Team', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->name,
+            $url
+        );
     }
 }

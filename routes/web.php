@@ -1,6 +1,9 @@
 <?php
 
 Route::group(['middleware' => 'language'], function () {
+    Route::get('/', 'TestController@index');
+    Route::get('/search', 'TestController@search')->name('search');
+  
 Route::get('/master', function () {
     return view('master');
 });
@@ -59,7 +62,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
       // Publications
       Route::delete('publications/destroy', 'PublicationController@massDestroy')->name('publications.massDestroy');
       Route::resource('publications', 'PublicationController');
-   
+      Route::get('/{fichier}', 'HomeController@download');
        // Settings
        Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
        Route::resource('settings', 'SettingsController');

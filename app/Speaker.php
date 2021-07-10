@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
-class Speaker extends Model implements HasMedia
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+class Speaker extends Model implements HasMedia ,Searchable
 {
     use SoftDeletes, InteractsWithMedia;
 
@@ -58,4 +59,14 @@ class Speaker extends Model implements HasMedia
 
         return $file;
     }*/
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('semin', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->name,
+            $url
+        );
+    }
 }

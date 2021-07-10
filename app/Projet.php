@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Projet extends Model
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+class Projet extends Model  implements Searchable
 {
     use SoftDeletes;
 
@@ -31,5 +32,14 @@ class Projet extends Model
     public function user(){
         return $this->belongsTo(User::class, 'responsable_id');
     }
-   
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('admin.projets.show', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->titre,
+            $url
+         );
+    }
 }

@@ -216,7 +216,14 @@ a:focus {
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.PROJECTS')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.galleries')}}  </a></li>
-        
+          <li>
+   <form action="{{ route('search') }}" method="GET">
+					    @csrf
+					    <input type="text" name="query" class="form-control" />
+					    <input type="submit" class="btn btn-sm btn-primary" value="Search" style="margin-top: 10px;" />
+					</form>
+               
+</li>
           <li><a class="nav-link scrollto" href="/contact">{{__('translate.contact')}}</a></li>
           <li><a href="{{ route('login') }}"> {{__('translate.signin')}}</a></li>
           <li  class="drop-down"><a href="#"><span>{{app()->getLocale() }}</span> <i class="bi bi-chevron-down"></i></a>

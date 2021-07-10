@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Response;
 use App\Setting;
 use App\Speaker;
 use App\Schedule;
@@ -12,7 +13,8 @@ use App\Sponsor;
 use App\Faq;
 use App\Price;
 use App\Amenity;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storoage;
 class HomeController extends Controller
 {
     public function index()
@@ -39,5 +41,9 @@ class HomeController extends Controller
         $settings = Setting::pluck('value', 'key');
         
         return view('speaker', compact('settings', 'speaker'));
+    }
+    public function download(Request $request ,$file){  
+    
+      return response()->download(public_path('images/'.$file));           
     }
 }

@@ -173,10 +173,11 @@
                                 {{ $publication->idApp ?? '' }}
                             </td>
                             <td>
-                               
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.publications.show', $publication->id) }}">
-                                        {{ trans('global.view') }}
+                                <div class="dropdown text-center">
+                                    <a class="dropdown-button" id="dropdown-menu-{{ $publication->id }}" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
                                     </a>
+<<<<<<< HEAD
                                     <a href="{{ url('/images',$publication->fichier )}}" class="btn btn-xs btn-primary"><i class="icon-download-alt"> Telechager le Fichier </i>  </a>
 
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.publications.edit', $publication->id) }}">
@@ -190,6 +191,36 @@
                                     </form>
                           
 
+=======
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-menu-{{ $publication->id }}">
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.publications.show', $publication->id) }}">
+                                                <i class="fa fa-user fa-lg"></i>
+                                                {{ trans('global.view') }}
+                                            </a>
+                                        
+                            
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.publications.edit', $publication->id) }}">
+                                                <i class="fa fa-edit"></i>
+                                                {{ trans('global.edit') }}
+                                            </a>
+                                        
+                                        
+                                        
+                                            <form id="delete-{{ $publication->id }}" action="{{ route('admin.publications.destroy', $publication->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="#" onclick="if(confirm('{{ trans('global.areYouSure') }}')) document.getElementById('delete-{{ $publication->id }}').submit()">
+                                                <i class="fa fa-trash"></i>
+                                                {{ trans('global.delete') }}
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            
+>>>>>>> 806298801f52ff2163a879c709ba811c0a7eb65f
                             </td>
 
                         </tr>
@@ -199,6 +230,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('styles')
+<style>
+.dataTables_scrollBody, .dataTables_wrapper {
+    position: static !important;
+}
+.dropdown-button {
+    cursor: pointer;
+    font-size: 2em;
+    display:block
+}
+.dropdown-menu i {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    color: #000;
+}
+</style>
 @endsection
 @section('scripts')
 @parent

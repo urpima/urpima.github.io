@@ -11,11 +11,23 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\User;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class AxesController extends Controller
 {
     public function index()
     {
        $axes = Axe::all();
+       if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.axes.index', compact('axes'));
     }
@@ -30,7 +42,7 @@ class AxesController extends Controller
     {
         $axe = Axe::create($request->all());
 
-        return redirect()->route('admin.axes.index');
+        return redirect()->route('admin.axes.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Axe $axe)
@@ -45,7 +57,7 @@ class AxesController extends Controller
     {
         $axe->update($request->all());
 
-        return redirect()->route('admin.axes.index');
+        return redirect()->route('admin.axes.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Axe $axe)
@@ -58,7 +70,7 @@ class AxesController extends Controller
     {
        $axe->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyaxeRequest $request)

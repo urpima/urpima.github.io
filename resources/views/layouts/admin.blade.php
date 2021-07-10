@@ -24,7 +24,13 @@
 
     <link href="{{ asset('styles.css') }}" rel="stylesheet" />
 
-   
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 
     <!--sweetalert-->
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -248,6 +254,7 @@
 });
 
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         /*!
      * AdminLTE v3.0.0-alpha.2 (https://adminlte.io)
@@ -259,7 +266,7 @@
 
 
     </script>
-    
+    @include('sweetalert::alert')
     @yield('scripts')
 </body>
 

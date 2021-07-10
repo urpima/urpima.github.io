@@ -11,6 +11,7 @@ use App\Sponsor;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SponsorsController extends Controller
 {
@@ -21,6 +22,16 @@ class SponsorsController extends Controller
         //abort_if(Gate::denies('sponsor_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $sponsors = Sponsor::all();
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.sponsors.index', compact('sponsors'));
     }
@@ -40,7 +51,7 @@ class SponsorsController extends Controller
             $sponsor->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
         }*/
 
-        return redirect()->route('admin.sponsors.index');
+        return redirect()->route('admin.sponsors.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Sponsor $sponsor)
@@ -62,7 +73,7 @@ class SponsorsController extends Controller
             $sponsor->logo->delete();
         }*/
 
-        return redirect()->route('admin.sponsors.index');
+        return redirect()->route('admin.sponsors.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Sponsor $sponsor)
@@ -78,7 +89,7 @@ class SponsorsController extends Controller
 
         $sponsor->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroySponsorRequest $request)

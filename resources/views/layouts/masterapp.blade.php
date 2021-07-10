@@ -69,17 +69,7 @@ a:focus {
   outline: none;
   text-decoration: none;
 }
-.bg-light {
-    background-color: transparent!important;
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: #fff;
-    /* background-color: #007bff; */
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    /*color: rgb(102, 97, 97);
-    background-color: #007bff;*/
-}
+
 
 /*body {
   direction: rtl;
@@ -194,7 +184,7 @@ a:focus {
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
      
      
-      <nav class="nav-menu d-none d-lg-block navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="nav-menu d-none d-lg-block ">
        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active"  data-toggle="pill1" href="/" role="tab" aria-controls="pills-home" aria-selected="true">{{__('translate.home')}}</a>
@@ -210,7 +200,7 @@ a:focus {
         
         <ul>
          <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.teams')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.teams')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/publication">{{__('translate.publication')}}</a></li> 
           <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>

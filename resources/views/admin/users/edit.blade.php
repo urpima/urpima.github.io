@@ -124,6 +124,20 @@
                     {{ trans('cruds.user.fields.email_helper') }}
                 </p>
             </div>
+            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+              <label for="password">{{ trans('cruds.user.fields.password') }}</label>
+              <div class="input_box">
+              <input type="password" id="password" name="password" class="form-control" value="{{ old('password', isset($user) ? $user->password : '') }}">
+              <i class="fa fa-eye"  id="show_hide"></i></div>
+              @if($errors->has('password'))
+                  <p class="help-block">
+                      {{ $errors->first('password') }}
+                  </p>
+              @endif
+              <p class="helper-block">
+                  {{ trans('cruds.user.fields.password_helper') }}
+              </p>
+          </div>
             <div class="form-group {{ $errors->has('Grade') ? 'has-error' : '' }}">
             <label class="control-label col-md-4" >Qualité/ Grade* </label>
              @if($user->Grade=='Maitre Conférences')
@@ -218,17 +232,6 @@
                     <option selected>Analyse Numérique</option>
              </select>
              @endif
-             @if($user->Spécialité=='Réseau et télécommunication')
-             <select class="form-control" type="text" name="Spécialité" id="Spécialité">
-                    <option >Intelligence artificielle</option>
-                    <option selected>Réseau et télécommunication</option>
-                    <option>Statistiques</option>
-                    <option>Optimisation combinatoire</option>
-                    <option>Bases de données</option>
-                    <option>Equations aux dérivées partielles</option>
-                    <option>Analyse Numérique</option>
-             </select>
-             @endif
            </div>
             <div class="form-group">
             <label class="control-label col-md-4">Statut* : </label>
@@ -258,18 +261,7 @@
              </select>
              @endif
            </div>
-            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label for="password">{{ trans('cruds.user.fields.password') }}</label>
-                <input type="password" id="password" name="password" class="form-control">
-                @if($errors->has('password'))
-                    <p class="help-block">
-                        {{ $errors->first('password') }}
-                    </p>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.user.fields.password_helper') }}
-                </p>
-            </div>
+            
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
                 <label for="roles">{{ trans('cruds.user.fields.roles') }}*
                     <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
@@ -369,4 +361,53 @@
     }
 }
 </script>
+<script>
+  var password = document.getElementById("password");
+  var show_hide = document.getElementById("show_hide");
+  
+  show_hide.onclick = function()
+  {
+    if(password.type == "password")
+    {
+      password.type = "text";
+      show_hide.style.color="green";
+    }
+    else{
+      password.type = "password";
+      show_hide.style.color="#ccc";
+    }
+  }
+  </script> 
+  <script>
+    
+    const inputs = document.querySelectorAll('input');
+  
+  // regex patterns
+  const patterns = {
+    name: /^[a-z\d]{2,12}$/i,
+    prenom: /^[a-z\d]{2,12}$/i,
+    password: /^[a-z\d\.-\d\.!]{6,16}$/i,
+    email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+          //             yourname @ domain   .  com          ( .uk )
+  };
+  
+  // validation function
+  function validate(field, regex){
+  
+      if(regex.test(field.value)){
+          field.className = 'valid';
+      } else {
+          field.className = 'invalid';
+      }
+  
+  }
+  
+  // attach keyup events to inputs
+  inputs.forEach((input) => {
+      input.addEventListener('keyup', (e) => {
+              // console.log(patterns[e.target.attributes.name.value]);
+              validate(e.target, patterns[e.target.attributes.name.value]);
+      });
+  });
+    </script>
 @stop

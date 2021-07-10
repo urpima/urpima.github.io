@@ -11,6 +11,7 @@ use App\Axe;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Schedule2Controller extends Controller
 {
@@ -19,6 +20,19 @@ class Schedule2Controller extends Controller
        // abort_if(Gate::denies('Schedule2_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $schedule2s = Schedule2::all();
+        
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
+  
+
 
         return view('admin.schedule2s.index', compact('schedule2s'));
     }
@@ -36,7 +50,7 @@ class Schedule2Controller extends Controller
     {
         $schedule2 = Schedule2::create($request->all());
 
-        return redirect()->route('admin.schedule2s.index');
+        return redirect()->route('admin.schedule2s.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Schedule2 $schedule2)
@@ -54,7 +68,7 @@ class Schedule2Controller extends Controller
     {
         $schedule2->update($request->all());
 
-        return redirect()->route('admin.schedule2s.index');
+        return redirect()->route('admin.schedule2s.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Schedule2 $schedule2)
@@ -72,7 +86,7 @@ class Schedule2Controller extends Controller
 
         $schedule2->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroySchedule2Request $request)

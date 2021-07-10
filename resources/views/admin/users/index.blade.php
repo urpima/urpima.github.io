@@ -12,7 +12,7 @@
     <div class="card-header">
         {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
     </div>
-
+    
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-User">
@@ -208,4 +208,5 @@
 })
 
 </script>
+
 @endsection

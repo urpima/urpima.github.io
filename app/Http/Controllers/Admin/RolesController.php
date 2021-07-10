@@ -11,6 +11,7 @@ use App\Role;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RolesController extends Controller
 {
@@ -19,6 +20,17 @@ class RolesController extends Controller
         //abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all();
+
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.roles.index', compact('roles'));
     }
@@ -37,7 +49,7 @@ class RolesController extends Controller
         $role = Role::create($request->all());
         $role->permissions()->sync($request->input('permissions', []));
 
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Role $role)
@@ -56,7 +68,7 @@ class RolesController extends Controller
         $role->update($request->all());
         $role->permissions()->sync($request->input('permissions', []));
 
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Role $role)
@@ -74,7 +86,7 @@ class RolesController extends Controller
 
         $role->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyRoleRequest $request)

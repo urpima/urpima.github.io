@@ -10,6 +10,7 @@ use App\Permission;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PermissionsController extends Controller
 {
@@ -18,6 +19,16 @@ class PermissionsController extends Controller
         //abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::all();
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.permissions.index', compact('permissions'));
     }
@@ -33,7 +44,7 @@ class PermissionsController extends Controller
     {
         $permission = Permission::create($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Permission $permission)
@@ -47,7 +58,7 @@ class PermissionsController extends Controller
     {
         $permission->update($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Permission $permission)
@@ -63,7 +74,7 @@ class PermissionsController extends Controller
 
         $permission->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyPermissionRequest $request)

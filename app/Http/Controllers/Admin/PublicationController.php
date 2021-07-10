@@ -13,12 +13,24 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\User;
 use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class PublicationController extends Controller
 {
     use MediaUploadingTrait;
     public function index()
     {
        $publications = Publication::all();
+       if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.publications.index', compact('publications'));
     }
@@ -85,7 +97,7 @@ class PublicationController extends Controller
            Publication::create($form_data);
           // return response()->json(['success' => 'Data Added successfully.']);
           // return response()->json(['success' => 'Data Added successfully.']);
-        return redirect()->route('admin.publications.index');
+        return redirect()->route('admin.publications.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Publication $publication)
@@ -101,7 +113,7 @@ class PublicationController extends Controller
     {
         $publication->update($request->all());
 
-        return redirect()->route('admin.publications.index');
+        return redirect()->route('admin.publications.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Publication $publication)
@@ -115,7 +127,7 @@ class PublicationController extends Controller
     {
        $publication->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyPublicationRequest $request)

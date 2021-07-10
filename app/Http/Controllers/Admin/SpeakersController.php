@@ -11,6 +11,7 @@ use App\Speaker;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SpeakersController extends Controller
 {
@@ -21,6 +22,16 @@ class SpeakersController extends Controller
         //abort_if(Gate::denies('speaker_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $speakers = Speaker::all();
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.speakers.index', compact('speakers'));
     }
@@ -40,7 +51,7 @@ class SpeakersController extends Controller
             $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
         }*/
 
-        return redirect()->route('admin.speakers.index');
+        return redirect()->route('admin.speakers.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Speaker $speaker)
@@ -63,7 +74,7 @@ class SpeakersController extends Controller
             $speaker->photo->delete();
         }*/
 
-        return redirect()->route('admin.speakers.index');
+        return redirect()->route('admin.speakers.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Speaker $speaker)
@@ -79,7 +90,7 @@ class SpeakersController extends Controller
 
         $speaker->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroySpeakerRequest $request)

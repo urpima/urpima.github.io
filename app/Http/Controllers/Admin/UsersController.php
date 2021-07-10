@@ -12,6 +12,7 @@ use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UsersController extends Controller
 {
@@ -23,13 +24,23 @@ class UsersController extends Controller
 
         $users = User::all();
 
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
+  
         return view('admin.users.index', compact('users'));
     }
 
     public function create()
     {
-        //abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-     
+       
         $roles = Role::all()->pluck('title', 'id');
 
         return view('admin.users.create', compact('roles'));
@@ -39,7 +50,7 @@ class UsersController extends Controller
     {
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(User $user)
@@ -58,7 +69,7 @@ class UsersController extends Controller
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(User $user)
@@ -76,7 +87,7 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

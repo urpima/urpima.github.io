@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateGalleryRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GalleriesController extends Controller
 {
@@ -21,6 +22,16 @@ class GalleriesController extends Controller
         //abort_if(Gate::denies('gallery_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $galleries = Gallery::all();
+        if (session( 'success_message'))
+    {
+        Alert::success('Excellent!', 'Modifier Avec Succès!')->persistent(true,false);
+    }
+    if(session('toast_success')){
+        Alert::success('Excellent!', 'Ajouté Avec Succès!')->persistent(true,false);
+    }
+    if(session('success')){
+        Alert::success('Excellent!', 'Supprimer Avec Succès!')->persistent(true,false);
+    }
 
         return view('admin.galleries.index', compact('galleries'));
     }
@@ -40,7 +51,7 @@ class GalleriesController extends Controller
             $gallery->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('photos');
         }*/
 
-        return redirect()->route('admin.galleries.index');
+        return redirect()->route('admin.galleries.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Gallery $gallery)
@@ -70,7 +81,7 @@ class GalleriesController extends Controller
             }
         }*/
 
-        return redirect()->route('admin.galleries.index');
+        return redirect()->route('admin.galleries.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Gallery $gallery)
@@ -86,7 +97,7 @@ class GalleriesController extends Controller
 
         $gallery->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyGalleryRequest $request)

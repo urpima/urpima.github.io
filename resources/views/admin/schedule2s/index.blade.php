@@ -53,28 +53,39 @@
                             </td>
                           
                             <td>
-                                
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.schedule2s.show', $schedule2->id) }}">
-                                       Vue
+                                <div class="dropdown text-center">
+                                    <a class="dropdown-button" id="dropdown-menu-{{ $schedule2->id }}" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
                                     </a>
-                                
-
-                                
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.schedule2s.edit', $schedule2->id) }}">
-                                        Modifier
-                                    </a>
-                                
-
-                                
-                                    <form action="{{ route('admin.schedule2s.destroy', $schedule2->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="Supprimer">
-                                    </form>
-                                
-
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-menu-{{ $schedule2->id }}">
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.schedule2s.show', $schedule2->id) }}">
+                                                <i class="fa fa-user fa-lg"></i>
+                                                {{ trans('global.view') }}
+                                            </a>
+                                        
+                            
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.schedule2s.edit', $schedule2->id) }}">
+                                                <i class="fa fa-edit"></i>
+                                                {{ trans('global.edit') }}
+                                            </a>
+                                        
+                                        
+                                        
+                                            <form id="delete-{{ $schedule2->id }}" action="{{ route('admin.schedule2s.destroy', $schedule2->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="#" onclick="if(confirm('{{ trans('global.areYouSure') }}')) document.getElementById('delete-{{ $schedule2->id }}').submit()">
+                                                <i class="fa fa-trash"></i>
+                                                {{ trans('global.delete') }}
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -82,6 +93,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('styles')
+<style>
+.dataTables_scrollBody, .dataTables_wrapper {
+    position: static !important;
+}
+.dropdown-button {
+    cursor: pointer;
+    font-size: 2em;
+    display:block
+}
+.dropdown-menu i {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    color: #000;
+}
+</style>
 @endsection
 @section('scripts')
 @parent

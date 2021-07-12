@@ -29,7 +29,7 @@ a {
          
         @foreach($annee as $publication)
         <tr > 
-           <td style="vertical-align: middle">>@if($publication->user)
+           <td style="vertical-align: middle">@if($publication->user)
                  
                     <img src="{{ URL::to('/') }}/upload/{{ $publication->user->url }}" alt="{{ $publication->user->name }}" class="img-fluid">
                     <div class="details">

@@ -141,6 +141,26 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route("admin.memberprojets.index") }}" class="nav-link {{ request()->is('admin/memberprojets') || request()->is('admin/memberprojets/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>Memberprojets</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.auteurpublications.index") }}" class="nav-link {{ request()->is('admin/auteurpublications') || request()->is('admin/auteurpublications/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>Auteurpublications</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route("admin.schedules.index") }}" class="nav-link {{ request()->is('admin/schedules') || request()->is('admin/schedules/*') ? 'active' : '' }}">
                             <i class="fa-fw far fa-clock">
 

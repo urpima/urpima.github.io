@@ -9,6 +9,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Role;
 use App\User;
+use App\Axe;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,8 +43,8 @@ class UsersController extends Controller
     {
        
         $roles = Role::all()->pluck('title', 'id');
-
-        return view('admin.users.create', compact('roles'));
+        $axes = Axe::all()->pluck('nom', 'id')->prepend('Veuillez sélectionner', '');
+        return view('admin.users.create', compact('roles','axes'));
     }
 
     public function store(StoreUserRequest $request)

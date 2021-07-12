@@ -19,7 +19,6 @@ class CreatePublicationsTable extends Migration
             $table->string('typedocument');
             $table->string('titre');
             $table->string('titredelivre');
-            $table->string('auteur');
             $table->string('journal');
             $table->integer('volume');
             $table->integer('numero');

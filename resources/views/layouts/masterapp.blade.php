@@ -204,7 +204,7 @@ a:focus {
           <li><a class=" nav-link " aria-selected="false" href="/publication">{{__('translate.publication')}}</a></li> 
           <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
           <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.PROJECTS')}}</a></li>
+          <li><a class=" nav-link " aria-selected="false" href="/projet">{{__('translate.PROJECTS')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.galleries')}}  </a></li>
           <li>
    <form action="{{ route('search') }}" method="GET">

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\User;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Illuminate\Support\Facades\Storoage;
 class PublicationController extends Controller
 {
     use MediaUploadingTrait;
@@ -37,7 +37,7 @@ class PublicationController extends Controller
 
     public function create()
     {
-       $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+       $users = User::all()->pluck('name', 'id')->prepend('Veuillez sélectionner', '');
 
 
 
@@ -49,10 +49,10 @@ class PublicationController extends Controller
        
 
        // $Publication = Publication::create($request->all());
+       
         $rules = array(
-            'fichier' => 'required|file|max:2048',
-               'typedocument'    =>  'required',
-               'titre'    =>  'required',
+            'fichier' => 'required|file|max:2048'
+          
                
          );
     
@@ -60,7 +60,7 @@ class PublicationController extends Controller
     
          if($error->fails())
          {
-             return response()->json(['errors' => $error->errors()->all()]);
+            $Publication = Publication::create($request->all());
          }
     
     
@@ -136,4 +136,8 @@ class PublicationController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+    public function download(Request $request ,$file){  
+    
+        return response()->download(public_path('images/'.$file));           
+      }
 }

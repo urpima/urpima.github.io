@@ -8,7 +8,7 @@
       <ul class="nav nav-tabs" role="tablist">
         @foreach($speakers as $key => $day)
           <li class="nav-item">
-            <a class="nav-link{{ $key === 1 ? ' active' : '' }}" href="#day-{{ $key }}" role="tab" data-toggle="tab">Day {{ $key }}</a>
+            <a class="nav-link{{ $key === 1 ? ' active' : '' }}" href="#day-{{ $key }}" role="tab" data-toggle="tab"><time>{{ \Carbon\Carbon::parse($speaker->start_time)->format("h:i A") }}</time> {{ $key }}</a>
             
         </li>
         @endforeach
@@ -18,7 +18,7 @@
         necessitatibus voluptatem quis labore perspiciatis quia.</h3>
   
       <div class="tab-content row justify-content-center">
-        @foreach($speakers as $key => $day && $day as $speaker )
+        @foreach($speakers as $key => $day )
           <div role="tabpanel" class="col-lg-9 tab-pane fade{{ $key === 1 ? ' show active' : '' }}" id="day-{{ $key }}">
             @foreach($day as $speaker)
               <div class="row schedule-item">

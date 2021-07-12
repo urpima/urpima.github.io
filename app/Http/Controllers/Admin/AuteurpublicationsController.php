@@ -13,6 +13,7 @@ use App\Publication;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class AuteurpublicationsController extends Controller
 {
     public function index()
@@ -43,7 +44,7 @@ class AuteurpublicationsController extends Controller
     {
        $auteurpublication = Auteurpublication::create($request->all());
 
-        return redirect()->route('admin.auteurpublications.index');
+        return redirect()->route('admin.auteurpublications.index')->withToastSuccess('Task Created Successfully!');
     }
 
     public function edit(Auteurpublication $auteurpublication)
@@ -61,7 +62,7 @@ class AuteurpublicationsController extends Controller
     {
        $auteurpublication->update($request->all());
 
-        return redirect()->route('admin.auteurpublications.index');
+        return redirect()->route('admin.auteurpublications.index')->withSuccessMessage('Successfully added');
     }
 
     public function show(Auteurpublication $auteurpublication)
@@ -73,13 +74,13 @@ class AuteurpublicationsController extends Controller
     {
       $auteurpublication->delete();
 
-        return back();
+        return back()->withSuccess('Task Created Successfully!');
     }
 
     public function massDestroy(MassDestroyAuteurpublicationRequest $request)
     {
         Auteurpublication::whereIn('id', request('ids'))->delete();
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return response(null, Response::HTTP_NO_CONTENT)->withSuccess('Task Created Successfully!');
     }
 }

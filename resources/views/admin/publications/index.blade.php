@@ -68,19 +68,34 @@
                                     <a class="dropdown-button" id="dropdown-menu-{{ $publication->id }}" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-ellipsis-v"></i>
                                     </a>
-                                    <a href="{{ url('/images',$publication->fichier )}}" class="btn btn-xs btn-primary"><i class="icon-download-alt"> Telechager le Fichier </i>  </a>
-
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.publications.edit', $publication->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                              
-                                    <form action="{{ route('admin.publications.destroy', $publication->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                          
-
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-menu-{{ $publication->id }}">
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.publications.show', $publication->id) }}">
+                                                <i class="fa fa-user fa-lg"></i>
+                                                {{ trans('global.view') }}
+                                            </a>
+                                        
+                            
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.publications.edit', $publication->id) }}">
+                                                <i class="fa fa-edit"></i>
+                                                {{ trans('global.edit') }}
+                                            </a>
+                                        
+                                        
+                                        
+                                            <form id="delete-{{ $publication->id }}" action="{{ route('admin.publications.destroy', $publication->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="#" onclick="if(confirm('{{ trans('global.areYouSure') }}')) document.getElementById('delete-{{ $publication->id }}').submit()">
+                                                <i class="fa fa-trash"></i>
+                                                {{ trans('global.delete') }}
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            
                             </td>
 
                         </tr>

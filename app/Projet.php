@@ -22,7 +22,6 @@ class Projet extends Model  implements Searchable
         'titre',
          'type',
           'responsable_id', 
-          'id_member', 
           'nature',
           'description',
         'created_at',
@@ -32,6 +31,7 @@ class Projet extends Model  implements Searchable
     public function user(){
         return $this->belongsTo(User::class, 'responsable_id');
     }
+  
     public function getSearchResult(): SearchResult
     {
         $url = route('admin.projets.show', $this->id);

@@ -43,7 +43,7 @@ class ProjetsController extends Controller
     public function store(StoreProjetRequest $request)
     {
         $projet = Projet::create($request->all());
-
+      
         return redirect()->route('admin.projets.index')->withToastSuccess('Task Created Successfully!');
     }
 

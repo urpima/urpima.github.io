@@ -63,21 +63,7 @@
          
           
 <div  id="Article" class="choixhide">
-<div class="form-group {{ $errors->has('auteur') ? 'has-error' : '' }}">
-                <label for="auteur">Auteur</label>
-                <select name="auteur" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($axe) && $publication->user ? $publication->user->id : old('auteur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-         @if($errors->has('auteur'))
-                    <p class="help-block">
-                        {{ $errors->first('auteur') }}
-                    </p>
-                @endif
-               
-            </div>
+
 
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
@@ -163,7 +149,8 @@
 
 </div>
 <div  id="THESE"  class="choixhide">
-<div class="form-group {{ $errors->has('anneeuniversiteur') ? 'has-error' : '' }}">
+
+<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
                 <label for="key">Annee Universiteur</label>
                 <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
                  @if($errors->has('anneeuniverciteur'))
@@ -216,6 +203,7 @@
             </div>
             </div>
             <div  id="REPORTmaster" class="choixhide">
+           
 <div class="form-group {{ $errors->has('anneeuniversiteur') ? 'has-error' : '' }}">
                 <label for="key">Annee Universiteur</label>
                 <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
@@ -253,7 +241,8 @@
             </div>
             </div>
 <div  id="HDR" class="choixhide">
-<div class="form-group {{ $errors->has('anneeuniversiteur') ? 'has-error' : '' }}">
+
+<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
                 <label for="key">Annee Universiteur</label>
                 <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
                  @if($errors->has('anneeuniverciteur'))
@@ -307,21 +296,6 @@
             </div>
 
 <div  id="conférence" class="choixhide">
-<div class="form-group {{ $errors->has('auteur') ? 'has-error' : '' }}">
-                <label for="auteur">Auteur</label>
-                <select name="auteur" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($axe) && $publication->user ? $publication->user->id : old('auteur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-         @if($errors->has('auteur'))
-                    <p class="help-block">
-                        {{ $errors->first('auteur') }}
-                    </p>
-                @endif
-               
-            </div>
 
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
@@ -388,21 +362,7 @@
 
             </div>
 <div  id="Chapitre" class="choixhide">
-<div class="form-group {{ $errors->has('auteur') ? 'has-error' : '' }}">
-                <label for="auteur">Auteur</label>
-                <select name="auteur" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($axe) && $publication->user ? $publication->user->id : old('auteur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-         @if($errors->has('auteur'))
-                    <p class="help-block">
-                        {{ $errors->first('auteur') }}
-                    </p>
-                @endif
-               
-            </div>
+
 
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
@@ -509,21 +469,7 @@
 </div>
 </div>
 <div  id="livre" class="choixhide">
-<div class="form-group {{ $errors->has('auteur') ? 'has-error' : '' }}">
-                <label for="auteur">Auteur</label>
-                <select name="auteur" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($publication) && $publication->user ? $publication->user->id : old('auteur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-         @if($errors->has('auteur'))
-                    <p class="help-block">
-                        {{ $errors->first('auteur') }}
-                    </p>
-                @endif
-               
-            </div>
+
 
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
@@ -589,7 +535,6 @@
 </div>
 
 </div>
-
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>

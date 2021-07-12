@@ -38,6 +38,7 @@ Route::get('/semin', 'seminController@index')->name('semin');
 Route::get('/Activite', 'ActiviteController@index')->name('Activite');
 Route::get('/gallery', 'galleryController@index')->name('gallery');
 Route::get('/publication', 'PublicationController@index')->name('publication');
+Route::get('/projet', 'ProjetController@index')->name('projet');
 Route::get('/Team', 'TeamController@index')->name('Team');
 Route::get('/posts', 'PagesController@posts')->name('posts');
 Route::get('/semin/speaker/{speaker}', 'HomeController@view')->name('speaker');
@@ -79,10 +80,20 @@ Route::delete('gallery/destroy', 'ImageController@massDestroy')->name('gallery.m
       // Publications
       Route::delete('publications/destroy', 'PublicationController@massDestroy')->name('publications.massDestroy');
       Route::resource('publications', 'PublicationController');
+<<<<<<< HEAD
      // Route::get('/{fichier}', 'HomeController@download');
+=======
+      //Route::get('/{fichier}', 'PublicationController@download');
+>>>>>>> 941c951c6df47281d160f7dc3048990f8bef7f16
        // Settings
        Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
        Route::resource('settings', 'SettingsController');
+        // Memberprojets
+    Route::delete('memberprojets/destroy', 'MemberprojetsController@massDestroy')->name('memberprojets.massDestroy');
+    Route::resource('memberprojets', 'MemberprojetsController');
+      // Auteurpublications
+      Route::delete('auteurpublications/destroy', 'AuteurpublicationsController@massDestroy')->name('auteurpublications.massDestroy');
+      Route::resource('auteurpublications', 'AuteurpublicationsController');
    // projets
    Route::delete('projets/destroy', 'projetsController@massDestroy')->name('projets.massDestroy');
    Route::resource('projets', 'projetsController');

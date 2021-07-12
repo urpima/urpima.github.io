@@ -23,7 +23,7 @@ class Publication extends Model  implements Searchable
        'typedocument',
        'titre', 
        'titredelivre',
-        'auteur', 
+      
         'journal', 
         'volume', 
       'numero', 

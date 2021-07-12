@@ -111,9 +111,9 @@
            </div>
             
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
-                <label for="roles">{{ trans('cruds.user.fields.roles') }}*
-                    <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span></label>
+                <label for="roles">Roles*
+                    <span class="btn btn-info btn-xs select-all">Tout sélectionner</span>
+                    <span class="btn btn-info btn-xs deselect-all">Tout déselectionner</span></label>
                 <select name="roles[]" id="roles" class="form-control select2" multiple="multiple" required>
                     @foreach($roles as $id => $roles)
                         <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
@@ -132,13 +132,9 @@
            <div class="form-group">
             <label class="control-label col-md-4"> Spécialité*: </label>
              <select class="form-control" type="text" name="Spécialité" id="Spécialité">
-                    <option>Intelligence artificielle</option>
-                    <option>Réseau et télécommunication</option>
-                    <option>Statistiques</option>
-                    <option>Optimisation combinatoire</option>
-                    <option>Bases de données</option>
-                    <option>Equations aux dérivées partielles</option>
-                    <option>Analyse Numérique</option>
+             @foreach($axes as $id => $axe)
+                 <option value="{{ $id }}" {{ (isset($user) && $projet->user ? $axe->id : old('Spécialité')) == $id ? 'selected' : '' }}>{{ $axe }}</option>
+             @endforeach
              </select>
            </div>
             <div class="form-group">

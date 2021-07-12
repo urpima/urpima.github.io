@@ -43,15 +43,7 @@
                         </td>
                     </tr>
                     
-                    <tr>
-                        <th>
-                          Member
-                        </th>
-                        <td>
-                            {{ $projet->id_member }}
-                        </td>
-                    </tr>
-                  
+
                     <tr>
                         <th>
                             Nature

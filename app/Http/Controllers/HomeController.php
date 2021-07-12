@@ -46,4 +46,5 @@ class HomeController extends Controller
     
       return response()->download(public_path('images/'.$file));           
     }
+    
 }

@@ -3,83 +3,75 @@
 
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.publications.create") }}">
-               Ajouter Publication
+            <a class="btn btn-success" href="{{ route("admin.memberprojets.create") }}">
+               Ajouter Memberprojet
             </a>
         </div>
     </div>
 
 <div class="card">
     <div class="card-header">
-      Liste de Publication
+      Liste de Memberprojets
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-publication">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-memberprojet">
                 <thead>
                     <tr>
-                    <th>
-                            
+                      
+                        <th>
+                          
+                        </th>
+                        <th>
+                          Id
+                        </th>
+                        <th>
+                        Chercheur
+                        </th>
+                        <th>
+                           Projet
                         </th>
                        
-                        <th>
-                            ID
-                            </th>
-                        <th>
-                            Fichier
-                        </th>
-                        <th>
-                           Type Document
-                        </th>
-                        <th>
-                            Titre
-                        </th>
-                     
-                        
                         <th>
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($publications as $key => $publication)
-                        <tr data-entry-id="{{ $publication->id }}">
+                    @foreach($memberprojets as $key => $memberprojet)
+                        <tr data-entry-id="{{ $memberprojet->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $publication->id ?? '' }}
+                                {{ $memberprojet->id ?? '' }}
                             </td>
                             <td>
-                                {{ $publication->fichier ?? '' }}
+                                {{ $memberprojet->chercheur_id ?? '' }}
                             </td>
                             <td>
-                                {{ $publication->typedocument ?? '' }}
-                            </td>
-                            <td>
-                                {{ $publication->titre ?? '' }}
+                                {{ $memberprojet->projet_id ?? '' }}
                             </td>
                            
-                         
-                           
                             <td>
-                                <div class="dropdown text-center">
-                                    <a class="dropdown-button" id="dropdown-menu-{{ $publication->id }}" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v"></i>
+                               
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.memberprojets.show', $memberprojet->id) }}">
+                                        {{ trans('global.view') }}
                                     </a>
-                                    <a href="{{ url('/images',$publication->fichier )}}" class="btn btn-xs btn-primary"><i class="icon-download-alt"> Telechager le Fichier </i>  </a>
-
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.publications.edit', $publication->id) }}">
+                             
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.memberprojets.edit', $memberprojet->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                               
-                                    <form action="{{ route('admin.publications.destroy', $publication->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('admin.memberprojets.destroy', $memberprojet->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
-                          
+                                   
+          
+      
 
                             </td>
 
@@ -91,24 +83,6 @@
     </div>
 </div>
 @endsection
-@section('styles')
-<style>
-.dataTables_scrollBody, .dataTables_wrapper {
-    position: static !important;
-}
-.dropdown-button {
-    cursor: pointer;
-    font-size: 2em;
-    display:block
-}
-.dropdown-menu i {
-    font-size: 1.33333333em;
-    line-height: 0.75em;
-    vertical-align: -15%;
-    color: #000;
-}
-</style>
-@endsection
 @section('scripts')
 @parent
 <script>
@@ -118,7 +92,7 @@
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.publications.massDestroy') }}",
+    url: "{{ route('admin.memberprojets.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -148,7 +122,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  $('.datatable-publication:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable-memberprojet:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();

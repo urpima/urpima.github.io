@@ -83,7 +83,9 @@
                                                 <i class="fa fa-trash"></i>
                                                 {{ trans('global.delete') }}
                                             </a>
-                                        
+                                            <a class="dropdown-item"  href="{{ route("admin.schedule2s.create") }}">
+                Ajouter SousAxe
+            </a>
                                     </div>
                                 </div>
                             

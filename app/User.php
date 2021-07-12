@@ -88,9 +88,14 @@ class User extends Authenticatable implements HasMedia ,Searchable
             $url
         );
     }
+<<<<<<< HEAD
 
     public function speaker()
     {
         return $this->belongsTo(Speaker::class, 'speaker_id');
+=======
+    public function axe(){
+        return $this->belongsTo(Axe::class, 'Spécialité');
+>>>>>>> 941c951c6df47281d160f7dc3048990f8bef7f16
     }
 }

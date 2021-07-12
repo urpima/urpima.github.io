@@ -47,22 +47,7 @@
                 @endif
                
             </div>
-            <div class="form-group {{ $errors->has('key') ? 'has-error' : '' }}">
-                <label for="key">Members*</label>
-                <select name="id_member" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($projet) && $projet->user ? $axe->user->id : old('id_member')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-                
-                 @if($errors->has('id_member'))
-                    <p class="help-block">
-                        {{ $errors->first('id_member') }}
-                    </p>
-                @endif
-              
-            </div>
+          
             <div class="form-group {{ $errors->has('key') ? 'has-error' : '' }}">
                 <label for="key">Nature*</label>
                 <input type="text" name="nature" id="nature" class="form-control" value="{{ old('nature', isset($projet) ? $projet->nature : '') }}" />

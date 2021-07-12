@@ -35,9 +35,7 @@
                         <th>
                            Responsable
                         </th>
-                        <th>
-                           Member
-                        </th>
+                      
                         <th>
                             Nature
                         </th>
@@ -67,9 +65,7 @@
                             <td>
                                 {{ $projet->responsable_id ?? '' }}
                             </td>
-                            <td>
-                                {{ $projet->id_member ?? '' }}
-                            </td>
+                           
                             <td>
                                 {{ $projet->nature ?? '' }}
                             </td>

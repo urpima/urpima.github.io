@@ -3,7 +3,7 @@
 
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.galleries.create") }}">
+            <a class="btn btn-success" href="{{ route("gallerycreate") }}">
                 {{ trans('global.add') }} {{ trans('cruds.gallery.title_singular') }}
             </a>
         </div>
@@ -49,11 +49,11 @@
                             </td>
                             <td>
                                 @if($gallery->photos)
-                                
-                                        <a href="{{ URL::to('/') }}/upload/{{ $gallery->photos }}" target="_blank">
-                                            <img src="{{ URL::to('/') }}/upload/{{ $gallery->photos }}" width="50px" height="50px">
+                                    @foreach($photos->photos as $key => $media)
+                                        <a href="{{ $media->photo }}" target="_blank">
+                                            <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
                                         </a>
-                                 
+                                    @endforeach
                                 @endif
                             </td>
                             <td>
@@ -63,21 +63,21 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdown-menu-{{ $gallery->id }}">
                                         
-                                            <a class="dropdown-item" href="{{ route('admin.gallerys.show', $gallery->id) }}">
+                                            <a class="dropdown-item" href="{{ route('admin.galleries.show', $gallery->id) }}">
                                                 <i class="fa fa-user fa-lg"></i>
                                                 {{ trans('global.view') }}
                                             </a>
                                         
                             
                                         
-                                            <a class="dropdown-item" href="{{ route('admin.gallerys.edit', $gallery->id) }}">
+                                            <a class="dropdown-item" href="{{ route('admin.galleries.edit', $gallery->id) }}">
                                                 <i class="fa fa-edit"></i>
                                                 {{ trans('global.edit') }}
                                             </a>
                                         
                                         
                                         
-                                            <form id="delete-{{ $gallery->id }}" action="{{ route('admin.gallerys.destroy', $gallery->id) }}" method="POST">
+                                            <form id="delete-{{ $gallery->id }}" action="{{ route('admin.galleries.destroy', $gallery->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                             </form>

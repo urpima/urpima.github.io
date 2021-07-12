@@ -28,6 +28,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.schedule.fields.start_time') }}
+                        </th>
+                        <td>
+                            {{ $speaker->start_time }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.speaker.fields.description') }}
                         </th>
                         <td>
@@ -53,7 +61,31 @@
                                 </a>
                             @endif
                         </td>
-                    </tr>ee
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.schedule.fields.day_number') }}
+                        </th>
+                        <td>
+                            {{ $speaker->day_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.schedule.fields.subtitle') }}
+                        </th>
+                        <td>
+                            {{ $speaker->subtitle }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                           Axe
+                        </th>
+                        <td>
+                            {{ $speaker->axe->nom ?? '' }}
+                        </td>
+                    </tr>
                     <tr>
                         <th>
                             {{ trans('cruds.speaker.fields.twitter') }}

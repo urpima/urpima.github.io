@@ -28,7 +28,19 @@
                             {{ trans('cruds.speaker.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.schedule.fields.start_time') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.speaker.fields.description') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.schedule.fields.day_number') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.schedule.fields.subtitle') }}
+                        </th>
+                        <th>
+                           Axe
                         </th>
                         <th>
                             {{ trans('cruds.speaker.fields.twitter') }}
@@ -57,7 +69,19 @@
                                 {{ $speaker->name ?? '' }}
                             </td>
                             <td>
+                                {{ $speaker->start_time ?? '' }}
+                            </td>
+                            <td>
                                 {{ $speaker->description ?? '' }}
+                            </td>
+                            <td>
+                                {{ $speaker->day_number ?? '' }}
+                            </td>
+                            <td>
+                                {{ $speaker->subtitle ?? '' }}
+                            </td>
+                            <td>
+                                {{ $speaker->axe->nom ?? '' }}
                             </td>
                             <td>
                                 {{ $speaker->twitter ?? '' }}

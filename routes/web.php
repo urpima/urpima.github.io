@@ -16,6 +16,9 @@ Route::get('/Services', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/gallery', function () {
+    return view('gallery');
+});
 //contact
 Route::get('/contact', function () {
     return view('contact');
@@ -32,6 +35,8 @@ Route::get('/category/{name}', 'PagesController@category');
 
 Route::get('/', 'HomeController@index')->name('master');
 Route::get('/semin', 'seminController@index')->name('semin');
+Route::get('/Activite', 'ActiviteController@index')->name('Activite');
+Route::get('/gallery', 'galleryController@index')->name('gallery');
 Route::get('/publication', 'PublicationController@index')->name('publication');
 Route::get('/Team', 'TeamController@index')->name('Team');
 Route::get('/posts', 'PagesController@posts')->name('posts');
@@ -39,8 +44,22 @@ Route::get('/semin/speaker/{speaker}', 'HomeController@view')->name('speaker');
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => true]);
 
+
+   
+  
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('galleries/create','GalleryController@gallerycreate')->name('gallerycreate');
+    Route::post('galleries/store','Gallerycontroller@galleryStore')->name('galleryStore');
+     //Images
+    //Route::resource('image','ImageController');
+    Route::get('/gallery','ImageController@index')->name('image.index');
+Route::get('/album/create','ImageController@create')->name('image.create');
+Route::post('/album/store','ImageController@store')->name('image.store');
+Route::delete('gallery/destroy', 'ImageController@massDestroy')->name('gallery.massDestroy');
+   // Route::resource('permissions', 'PermissionsController');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -57,12 +76,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('posts/destroy', 'PagesController@massDestroy')->name('posts.massDestroy');
     Route::resource('posts', 'PagesController');
 
-    
-      
       // Publications
       Route::delete('publications/destroy', 'PublicationController@massDestroy')->name('publications.massDestroy');
       Route::resource('publications', 'PublicationController');
-      Route::get('/{fichier}', 'HomeController@download');
+     // Route::get('/{fichier}', 'HomeController@download');
        // Settings
        Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
        Route::resource('settings', 'SettingsController');
@@ -103,11 +120,13 @@ Route::resource('schedule2s', 'Schedule2Controller');
     Route::post('hotels/media', 'HotelsController@storeMedia')->name('hotels.storeMedia');
     Route::resource('hotels', 'HotelsController');
 
+
     // Galleries
     Route::delete('galleries/destroy', 'GalleriesController@massDestroy')->name('galleries.massDestroy');
     Route::post('galleries/media', 'GalleriesController@storeMedia')->name('galleries.storeMedia');
     Route::resource('galleries', 'GalleriesController');
 
+      
     // Sponsors
     Route::delete('sponsors/destroy', 'SponsorsController@massDestroy')->name('sponsors.massDestroy');
     Route::post('sponsors/media', 'SponsorsController@storeMedia')->name('sponsors.storeMedia');

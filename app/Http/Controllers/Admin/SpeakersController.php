@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroySpeakerRequest;
 use App\Http\Requests\StoreSpeakerRequest;
 use App\Http\Requests\UpdateSpeakerRequest;
 use App\Speaker;
+use App\Axe;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,8 +40,10 @@ class SpeakersController extends Controller
     public function create()
     {
         //abort_if(Gate::denies('speaker_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //$axes = Axe::all()->pluck('nom', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $axes = Axe::all()->pluck('nom', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.speakers.create');
+        return view('admin.speakers.create',compact('axes'));
     }
 
     public function store(StoreSpeakerRequest $request)
@@ -58,7 +61,11 @@ class SpeakersController extends Controller
     {
        // abort_if(Gate::denies('speaker_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.speakers.edit', compact('speaker'));
+       $axes = Axe::all()->pluck('nom', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $speaker->load('axe');
+
+        return view('admin.speakers.edit', compact('axes','speaker'));
     }
 
     public function update(UpdateSpeakerRequest $request, Speaker $speaker)
@@ -80,7 +87,8 @@ class SpeakersController extends Controller
     public function show(Speaker $speaker)
     {
         //abort_if(Gate::denies('speaker_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+            
+        $speaker->load('axe');
         return view('admin.speakers.show', compact('speaker'));
     }
 
@@ -97,6 +105,6 @@ class SpeakersController extends Controller
     {
         Speaker::whereIn('id', request('ids'))->delete();
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return response(null, Response::HTTP_NO_CONTENT)->withSuccess('Task Created Successfully!');
     }
 }

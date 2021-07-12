@@ -32,20 +32,13 @@
                         </th>
                         <td>
                             @if($hotel->photo)
-                                <a href="{{ $hotel->photo->getUrl() }}" target="_blank">
-                                    <img src="{{ $hotel->photo->getUrl('thumb') }}" width="50px" height="50px">
+                                <a href="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" target="_blank">
+                                    <img src="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" width="50px" height="50px">
                                 </a>
                             @endif
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.hotel.fields.address') }}
-                        </th>
-                        <td>
-                            {{ $hotel->address }}
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <th>
                             {{ trans('cruds.hotel.fields.description') }}
@@ -54,14 +47,7 @@
                             {!! $hotel->description !!}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.hotel.fields.rating') }}
-                        </th>
-                        <td>
-                            {{ $hotel->rating }}
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">

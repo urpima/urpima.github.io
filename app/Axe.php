@@ -28,4 +28,8 @@ class Axe extends Model
     public function user(){
         return $this->belongsTo(User::class, 'responsable_id');
     }
+    public function speakers()
+    {
+        return $this->hasMany(Speaker::class, 'axe_id', 'id');
+    }
 }

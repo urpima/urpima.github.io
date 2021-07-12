@@ -27,7 +27,11 @@ class Speaker extends Model implements HasMedia ,Searchable
 
     protected $fillable = [
         'name',
+        'start_time',
         'photo',
+        'day_number',
+        'subtitle',
+        'axe_id',
         'twitter',
         'facebook',
         'linkedin',
@@ -43,9 +47,9 @@ class Speaker extends Model implements HasMedia ,Searchable
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }*/
 
-    public function schedules()
+    public function axe()
     {
-        return $this->hasMany(Schedule::class, 'speaker_id', 'id');
+        return $this->belongsTo(Axe::class, 'axe_id');
     }
 
     /*public function getPhotoAttribute()

@@ -22,6 +22,18 @@
                     {{ trans('cruds.speaker.fields.name_helper') }}
                 </p>
             </div>
+            <div class="form-group {{ $errors->has('start_time') ? 'has-error' : '' }}">
+                <label for="start_time">{{ trans('cruds.schedule.fields.start_time') }}*</label>
+                <input type="text" id="start_time" name="start_time" class="form-control timepicker" value="{{ old('start_time', isset($speaker) ? $speaker->start_time : '') }}" required>
+                @if($errors->has('start_time'))
+                    <p class="help-block">
+                        {{ $errors->first('start_time') }}
+                    </p>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.schedule.fields.start_time_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                 <label for="description">{{ trans('cruds.speaker.fields.description') }}</label>
                 <textarea id="description" name="description" class="form-control ">{{ old('description', isset($speaker) ? $speaker->description : '') }}</textarea>
@@ -59,6 +71,43 @@
                 <p class="helper-block">
                     {{ trans('cruds.speaker.fields.photo_helper') }}
                 </p>
+            </div>
+            <div class="form-group {{ $errors->has('day_number') ? 'has-error' : '' }}">
+                <label for="day_number">{{ trans('cruds.schedule.fields.day_number') }}*</label>
+                <input type="number" id="day_number" name="day_number" class="form-control" value="{{ old('day_number', isset($speaker) ? $speaker->day_number : '') }}" step="1" required>
+                @if($errors->has('day_number'))
+                    <p class="help-block">
+                        {{ $errors->first('day_number') }}
+                    </p>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.schedule.fields.day_number_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('subtitle') ? 'has-error' : '' }}">
+                <label for="subtitle">{{ trans('cruds.schedule.fields.subtitle') }}</label>
+                <input type="text" id="subtitle" name="subtitle" class="form-control" value="{{ old('subtitle', isset($speaker) ? $speaker->subtitle : '') }}">
+                @if($errors->has('subtitle'))
+                    <p class="help-block">
+                        {{ $errors->first('subtitle') }}
+                    </p>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.schedule.fields.subtitle_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('axe_id') ? 'has-error' : '' }}">
+                <label for="axe">Axe</label>
+                <select name="axe_id" id="axe" class="form-control select2">
+                    @foreach($axes as $id => $axe)
+                        <option value="{{ $id }}" {{ (isset($speaker) && $speaker->axe ? $speaker->axe->id : old('axe_id')) == $id ? 'selected' : '' }}>{{ $axe }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('axe_id'))
+                    <p class="help-block">
+                        {{ $errors->first('axe_id') }}
+                    </p>
+                @endif
             </div>
             <div class="form-group {{ $errors->has('twitter') ? 'has-error' : '' }}">
                 <label for="twitter">{{ trans('cruds.speaker.fields.twitter') }}</label>

@@ -176,16 +176,16 @@
 
                     <li class="nav-item">
                         <a href="{{ route("admin.hotels.index") }}" class="nav-link {{ request()->is('admin/hotels') || request()->is('admin/hotels/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-hotel">
+                            <i class="fa-fw fas fa-images">
 
                             </i>
                             <p>
-                                <span>{{ trans('cruds.hotel.title') }}</span>
+                                <span>{{ trans('cruds.gallery.title') }}</span>
                             </p>
                         </a>
                     </li>
 
-
+                   <!--
                     <li class="nav-item">
                         <a href="{{ route("admin.galleries.index") }}" class="nav-link {{ request()->is('admin/galleries') || request()->is('admin/galleries/*') ? 'active' : '' }}">
                             <i class="fa-fw fas fa-images">
@@ -196,6 +196,7 @@
                             </p>
                         </a>
                     </li>
+                -->
 
 
                     <li class="nav-item">

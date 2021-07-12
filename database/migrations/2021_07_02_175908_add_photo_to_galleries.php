@@ -14,7 +14,7 @@ class AddPhotoToGalleries extends Migration
     public function up()
     {
         Schema::table('galleries', function (Blueprint $table) {
-            $table->string('photo');
+            $table->string('photos');
         });
     }
 

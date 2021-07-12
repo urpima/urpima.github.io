@@ -36,18 +36,7 @@
                     {{ trans('cruds.hotel.fields.photo_helper') }}
                 </p>
             </div>
-            <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
-                <label for="address">{{ trans('cruds.hotel.fields.address') }}</label>
-                <input type="text" id="address" name="address" class="form-control" value="{{ old('address', isset($hotel) ? $hotel->address : '') }}">
-                @if($errors->has('address'))
-                    <p class="help-block">
-                        {{ $errors->first('address') }}
-                    </p>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.hotel.fields.address_helper') }}
-                </p>
-            </div>
+            
             <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                 <label for="description">{{ trans('cruds.hotel.fields.description') }}</label>
                 <textarea id="description" name="description" class="form-control ">{{ old('description', isset($hotel) ? $hotel->description : '') }}</textarea>
@@ -60,18 +49,7 @@
                     {{ trans('cruds.hotel.fields.description_helper') }}
                 </p>
             </div>
-            <div class="form-group {{ $errors->has('rating') ? 'has-error' : '' }}">
-                <label for="rating">{{ trans('cruds.hotel.fields.rating') }}</label>
-                <input type="number" id="rating" name="rating" class="form-control" value="{{ old('rating', isset($hotel) ? $hotel->rating : '') }}" step="1">
-                @if($errors->has('rating'))
-                    <p class="help-block">
-                        {{ $errors->first('rating') }}
-                    </p>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.hotel.fields.rating_helper') }}
-                </p>
-            </div>
+            
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>

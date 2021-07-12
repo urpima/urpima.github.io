@@ -31,15 +31,11 @@
                         <th>
                             {{ trans('cruds.hotel.fields.photo') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.hotel.fields.address') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.hotel.fields.description') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.hotel.fields.rating') }}
-                        </th>
+                        
                         <th>
                             &nbsp;
                         </th>
@@ -59,42 +55,51 @@
                             </td>
                             <td>
                                 @if($hotel->photo)
-                                    <a href="{{ $hotel->photo->getUrl() }}" target="_blank">
-                                        <img src="{{ $hotel->photo->getUrl('thumb') }}" width="50px" height="50px">
+                                    <a href="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" target="_blank">
+                                        <img src="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" width="50px" height="50px">
                                     </a>
                                 @endif
                             </td>
-                            <td>
-                                {{ $hotel->address ?? '' }}
-                            </td>
+                            
                             <td>
                                 {{ $hotel->description ?? '' }}
                             </td>
+                            
                             <td>
-                                {{ $hotel->rating ?? '' }}
-                            </td>
-                            <td>
-                                
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.hotels.show', $hotel->id) }}">
-                                        {{ trans('global.view') }}
+                                <div class="dropdown text-center">
+                                    <a class="dropdown-button" id="dropdown-menu-{{ $hotel->id }}" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
                                     </a>
-                                
-
-                                
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.hotels.edit', $hotel->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                
-
-                                
-                                    <form action="{{ route('admin.hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                
-
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-menu-{{ $hotel->id }}">
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.hotels.show', $hotel->id) }}">
+                                                <i class="fa fa-user fa-lg"></i>
+                                                {{ trans('global.view') }}
+                                            </a>
+                                        
+                            
+                                        
+                                            <a class="dropdown-item" href="{{ route('admin.hotels.edit', $hotel->id) }}">
+                                                <i class="fa fa-edit"></i>
+                                                {{ trans('global.edit') }}
+                                            </a>
+                                        
+                                        
+                                        
+                                            <form id="delete-{{ $hotel->id }}" action="{{ route('admin.hotels.destroy', $hotel->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="#" onclick="if(confirm('{{ trans('global.areYouSure') }}')) document.getElementById('delete-{{ $hotel->id }}').submit()">
+                                                <i class="fa fa-trash"></i>
+                                                {{ trans('global.delete') }}
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            
                             </td>
+                            
 
                         </tr>
                     @endforeach
@@ -103,6 +108,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('styles')
+<style>
+.dataTables_scrollBody, .dataTables_wrapper {
+    position: static !important;
+}
+.dropdown-button {
+    cursor: pointer;
+    font-size: 2em;
+    display:block
+}
+.dropdown-menu i {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    color: #000;
+}
+</style>
 @endsection
 @section('scripts')
 @parent

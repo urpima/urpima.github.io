@@ -14,9 +14,9 @@ class Hotel extends Model implements HasMedia
 
     public $table = 'hotels';
 
-    protected $appends = [
+    /*protected $appends = [
         'photo',
-    ];
+    ];*/
 
     protected $dates = [
         'created_at',
@@ -26,15 +26,14 @@ class Hotel extends Model implements HasMedia
 
     protected $fillable = [
         'name',
-        'rating',
-        'address',
+        'photo',
         'created_at',
         'updated_at',
         'deleted_at',
         'description',
     ];
 
-    public function registerMediaConversions(Media $media = null): void
+    /*public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
@@ -49,5 +48,5 @@ class Hotel extends Model implements HasMedia
         }
 
         return $file;
-    }
+    }*/
 }

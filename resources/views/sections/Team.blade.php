@@ -45,7 +45,7 @@
                     </div>
                 </div>
             <div class="team-content text-center">
-              <h4><a href="#">{{ $user->name }}</a></h4>
+              <h4><a href="{{ route('user', $user->id) }}" >{{ $user->name }} {{ $user->prenom }}</a></h4>
               <p>{{ $user->Grade }}</p>
             </div>
             </div>

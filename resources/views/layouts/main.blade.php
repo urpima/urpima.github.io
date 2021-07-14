@@ -23,11 +23,11 @@
 </head>
 
 <body>
-  
+  @include('partials.header')
 
   @yield('content')
 
-  
+  @include('partials.footer')
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 

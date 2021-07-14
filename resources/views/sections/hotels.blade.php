@@ -16,17 +16,18 @@
     <div class="container" data-aos="fade-up">
       <div class="section-header">
         <h2>Gallery</h2>
-        <p></p>
+        <p>Check our gallery from the recent events</p>
       </div>
     </div>
     
     <div class="owl-carousel gallery-carousel" data-aos="fade-up" data-aos-delay="100">
       @foreach($hotels as $hotel)
       <a href="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" class="venobox" data-gall="gallery-carousel"><img src="{{ URL::to('/') }}/upload/{{ $hotel->photo }}" alt=""></a>
+     
       @endforeach
-      
   </div>
-
+  
+  
   </section><!-- End Gallery Section -->
 
 

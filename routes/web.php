@@ -42,6 +42,7 @@ Route::get('/projet', 'ProjetController@index')->name('projet');
 Route::get('/Team', 'TeamController@index')->name('Team');
 Route::get('/posts', 'PagesController@posts')->name('posts');
 Route::get('/semin/speaker/{speaker}', 'HomeController@view')->name('speaker');
+Route::get('/Team/user/{user}', 'HomeController@view2')->name('user');
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => true]);
 

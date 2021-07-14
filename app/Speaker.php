@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
+
 class Speaker extends Model implements HasMedia ,Searchable
 {
     use SoftDeletes, InteractsWithMedia;

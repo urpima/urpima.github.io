@@ -14,12 +14,16 @@ use App\User;
 use App\Sponsor;
 use App\Faq;
 use App\Price;
+use App\Publication;
+use App\Auteurpublication;
 use App\Amenity;
 use Illuminate\Support\Facades\Storoage;
 class ActiviteController extends Controller
 {
     public function index()
     {
+        $Auteurs = Auteurpublication::all();
+        //$Auteurs = Publication::all();
         $speakers = Speaker::with('axe')
         ->orderBy('start_time', 'asc')
             ->get()
@@ -36,6 +40,6 @@ class ActiviteController extends Controller
         $prices = Price::with('amenities')->get();
         $amenities = Amenity::with('prices')->get();
 
-        return view('Activite', compact('speakers', 'schedules', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
+        return view('Activite', compact('Auteurs', 'speakers', 'schedules', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
     }
 }

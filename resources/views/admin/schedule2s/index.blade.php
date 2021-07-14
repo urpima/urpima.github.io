@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.schedule2s.create") }}">
-                Ajouter Sous Axe
+            <i class="fas fa-user-plus"></i>
             </a>
         </div>
     </div>

@@ -76,13 +76,12 @@ a:focus {
 }*/
     </style>
 
-    @if(app()->getLocale() == 'en')
-    <link rel="stylesheet" href="css/ltr-app.css">
-    @else
-    <link rel="stylesheet" href="css/rtl-app.css">
-@endif
+   
    <!-- ======= Slider Section ======= -->
-   <div id="home" class="slider-area">
+   
+</head>
+<body data-spy="scroll" data-target="#navbar-example" dir="{{(App::isLocale('ar') ? 'rtl' : 'ltr')}}">
+<div id="home" class="slider-area">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
         <img src="assets/img/slider/slider1.jpg" alt="" title="#slider-direction-1" />
@@ -166,25 +165,17 @@ a:focus {
       </div>
     </div>
   </div><!-- End Slider -->
-</head>
-<body data-spy="scroll" data-target="#navbar-example">
-  
-@yield('content')
- <!-- ======= Header ======= -->
- <header id="header" class="fixed-top">
+  <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top" >
  <div class="logo mr-auto">
         <h1 class="text-light"><a href="home"> <img align="left" src="images/LOBE.png" alt="" width="130px" heigth="130px"></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
- 
-    
-    </div>
+</div>
         
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-     
-     
-      <nav class="nav-menu d-none d-lg-block ">
+<nav class="nav-menu d-none d-lg-block ">
        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active"  data-toggle="pill1" href="/" role="tab" aria-controls="pills-home" aria-selected="true">{{__('translate.home')}}</a>
@@ -196,22 +187,14 @@ a:focus {
             <a class="nav-link"  data-toggle="pill3" href="/semin" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('translate.seminar')}}</a>
           </li>
         </ul>-->
-        
-        
-        <ul>
-         <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
+ <ul >
+    <li class="menu-active "> <a  class="nav-link active" aria-selected="true" href="/">{{__('translate.home')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.teams')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/publication">{{__('translate.publication')}}</a></li> 
           <li><a class=" nav-link " aria-selected="false" href="/semin">{{__('translate.seminar')}}</a></li>  
-<<<<<<< HEAD
           <li><a class=" nav-link " aria-selected="false" href="/Activite">{{__('translate.activities')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.PROJECTS')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/gallery">{{__('translate.galleries')}}  </a></li>
-=======
-          <li><a class=" nav-link " aria-selected="false" href="/Services">{{__('translate.activities')}}</a></li>
           <li><a class=" nav-link " aria-selected="false" href="/projet">{{__('translate.PROJECTS')}}</a></li>
-          <li><a class=" nav-link " aria-selected="false" href="/Team">{{__('translate.galleries')}}  </a></li>
->>>>>>> 941c951c6df47281d160f7dc3048990f8bef7f16
+          <li><a class=" nav-link " aria-selected="false" href="/gallery">{{__('translate.galleries')}}  </a></li>
           <li>
    <form action="{{ route('search') }}" method="GET">
 					    @csrf
@@ -245,6 +228,8 @@ a:focus {
  
   </main><!-- End #main -->
 
+@yield('content')
+ 
   <!-- ======= Footer ======= -->
   <footer>
     <div class="footer-area">
@@ -309,32 +294,11 @@ a:focus {
         </div>
       </div>
     </div>
-    <div class="footer-area-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="copyright text-center">
-              <p>
-                &copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
-              </p>
-            </div>
-            <div class="credits">
-              <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
-            -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
   </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
+ 
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>

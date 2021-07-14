@@ -3,7 +3,7 @@
 
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.memberprojets.create") }}">
+            <a class="btn btn-success" href="{{ route("admin.auteurpublications.create") }}">
             <i class="fas fa-user-plus"></i>
             </a>
         </div>
@@ -11,12 +11,12 @@
 
 <div class="card">
     <div class="card-header">
-      Liste de Memberprojets
+      Liste des Auteurs des publications
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-memberprojet">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-auteurpublication">
                 <thead>
                     <tr>
                       
@@ -30,7 +30,7 @@
                         Chercheur
                         </th>
                         <th>
-                           Projet
+                           Publication
                         </th>
                        
                         <th>
@@ -39,32 +39,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($memberprojets as $key => $memberprojet)
-                        <tr data-entry-id="{{ $memberprojet->id }}">
+                    @foreach($auteurpublications as $key => $auteurpublication)
+                        <tr data-entry-id="{{ $auteurpublication->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $memberprojet->id ?? '' }}
+                                {{ $auteurpublication->id ?? '' }}
                             </td>
                             <td>
-                                {{ $memberprojet->chercheur_id ?? '' }}
+                                {{ $auteurpublication->chercheur_id ?? '' }}
                             </td>
                             <td>
-                                {{ $memberprojet->projet_id ?? '' }}
+                                {{ $auteurpublication->publication_id ?? '' }}
                             </td>
                            
                             <td>
                                
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.memberprojets.show', $memberprojet->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.auteurpublications.show', $auteurpublication->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                              
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.memberprojets.edit', $memberprojet->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.auteurpublications.edit', $auteurpublication->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                               
-                                    <form action="{{ route('admin.memberprojets.destroy', $memberprojet->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('admin.auteurpublications.destroy', $auteurpublication->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -92,7 +92,7 @@
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.memberprojets.massDestroy') }}",
+    url: "{{ route('admin.auteurpublications.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -122,7 +122,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  $('.datatable-memberprojet:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable-auteurpublication:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();

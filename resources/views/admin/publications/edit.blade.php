@@ -14,40 +14,25 @@
         <form action="{{ route("admin.publications.update", [$publication->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
-                <label for="fichier">Fichier</label>
-                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
-                 @if($errors->has('fichier'))
-                    <p class="help-block">
-                        {{ $errors->first('fichier') }}
-                    </p>
-                @endif
-            </div>
+          
          
             <div class="form-group {{ $errors->has('typedocument') ? 'has-error' : '' }}">
                 <label for="typedocument">Type de Document*</label>
+                @if($publication->typedocument=='Article')
                 <select name="typedocument" id="choix" class="form-control" >
-
-                <option value="" selected="selected">------</option>
-    <option value="Article">Article</option>
-    <option value="Poste">Poster</option>
-    <option value="Chapitre">Chapitre </option>
-    <option value="REPORTmaster">Rapport master</option>
-    <option value="THESE">Thèse</option>
-    <option value="HDR">HDR</option>
-    <option value="livre">Livre</option>
-    <option value="conférence">Conférence</option>
-    <option value="Autre">Autre</option>
+                        <option value="Article" selected="selected">Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
                 </select>
-                
-                 @if($errors->has('typedocument'))
-                    <p class="help-block">
-                        {{ $errors->first('typedocument') }}
-                    </p>
-                @endif
-              
-        </div>
-      
+                  
+            </div>
+
             <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
                 <label for="key">Titre</label>
                 <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
@@ -58,13 +43,15 @@
                 @endif
              
             </div>
-            
-    
-         
-          
-<div  id="Article" class="choixhide">
-
-
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
                 <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page : '') }}" />
@@ -88,7 +75,7 @@
              
             </div>
             <div class="form-group {{ $errors->has('volume') ? 'has-error' : '' }}">
-                <label for="volume">Volume</label>
+                <label for="volume">volume</label>
                 <input type="number" name="volume" id="volume" class="form-control" value="{{ old('volume', isset($publication) ? $publication->volume: '') }}" />
                  @if($errors->has('volume'))
                     <p class="help-block">
@@ -120,9 +107,9 @@
             <div class="form-group {{ $errors->has('url') ? 'has-error' : '' }}">
                 <label for="key">Url</label>
                 <input type="text" name="url" id="url" class="form-control" value="{{ old('url', isset($publication) ? $publication->url: '') }}" />
-                 @if($errors->has('editeur'))
+                 @if($errors->has('url'))
                     <p class="help-block">
-                        {{ $errors->first('editeur') }}
+                        {{ $errors->first('url') }}
                     </p>
                 @endif
             
@@ -146,227 +133,65 @@
                 @endif
              
             </div>
-
-</div>
-<div  id="THESE"  class="choixhide">
-
-<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
-                <label for="key">Annee Universiteur</label>
-                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
-                 @if($errors->has('anneeuniverciteur'))
-                    <p class="help-block">
-                        {{ $errors->first('anneeuniverciteur') }}
-                    </p>
                 @endif
-            
-            </div>
-<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
-                <label for="key">Annee de Soutenance</label>
-                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
-                 @if($errors->has('anneesoutenance'))
+                @if($publication->typedocument=='Poste')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste" selected="selected">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
                     <p class="help-block">
-                        {{ $errors->first('anneesoutenance') }}
-                    </p>
-                @endif
-                
-            </div>
-
-
-            <div class="form-group {{ $errors->has('resume') ? 'has-error' : '' }}">
-                <label for="key">Résumé</label>
-                <input type="text" name="resume" id="resume" class="form-control" value="{{ old('resume', isset($publication) ? $publication->resume: '') }}" />
-                 @if($errors->has('resume'))
-                    <p class="help-block">
-                        {{ $errors->first('resume') }}
+                        {{ $errors->first('titre') }}
                     </p>
                 @endif
              
             </div>
-            <div class="form-group {{ $errors->has('motcle') ? 'has-error' : '' }}">
-                <label for="key">Mot Clé</label>
-                <input type="text" name="motcle" id="motcle" class="form-control" value="{{ old('motcle', isset($publication) ? $publication->motcle: '') }}" />
-                 @if($errors->has('motcle'))
-                    <p class="help-block">
-                        {{ $errors->first('motcle') }}
-                    </p>
                 @endif
-            
-            </div>   <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
-                <label for="key">ID</label>
-                <input type="text" name="id" id="id" class="form-control" value="{{ old('id', isset($publication) ? $publication->id: '') }}" />
-                 @if($errors->has('id'))
+                @if($publication->typedocument=='Chapitre')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre" selected="selected">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+             
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
                     <p class="help-block">
-                        {{ $errors->first('id') }}
+                        {{ $errors->first('titre') }}
                     </p>
                 @endif
              
             </div>
-            </div>
-            <div  id="REPORTmaster" class="choixhide">
-           
-<div class="form-group {{ $errors->has('anneeuniversiteur') ? 'has-error' : '' }}">
-                <label for="key">Annee Universiteur</label>
-                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
-                 @if($errors->has('anneeuniverciteur'))
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
                     <p class="help-block">
-                        {{ $errors->first('anneeuniverciteur') }}
+                        {{ $errors->first('fichier') }}
                     </p>
                 @endif
-            
             </div>
-<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
-                <label for="key">Annee de Soutenance</label>
-                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
-                 @if($errors->has('anneesoutenance'))
-                    <p class="help-block">
-                        {{ $errors->first('anneesoutenance') }}
-                    </p>
-                @endif
-                
-            </div>
-            <div class="form-group {{ $errors->has('encadreur') ? 'has-error' : '' }}">
-                <label for="encadreur">Encadreur</label>
-                <select name="encadreur" id="user" class="form-control select2" >
-             
-             @foreach($users as $id => $user)
-                 <option value="{{ $id }}" {{ (isset($publication) && $publication->user ? $publication->user->id : old('encadreur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
-             @endforeach
-         </select>
-         @if($errors->has('encadreur'))
-                    <p class="help-block">
-                        {{ $errors->first('encadreur') }}
-                    </p>
-                @endif
-               
-            </div>
-            </div>
-<div  id="HDR" class="choixhide">
-
-<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
-                <label for="key">Annee Universiteur</label>
-                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
-                 @if($errors->has('anneeuniverciteur'))
-                    <p class="help-block">
-                        {{ $errors->first('anneeuniverciteur') }}
-                    </p>
-                @endif
-            
-            </div>
-<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
-                <label for="key">Annee de Soutenance</label>
-                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
-                 @if($errors->has('anneesoutenance'))
-                    <p class="help-block">
-                        {{ $errors->first('anneesoutenance') }}
-                    </p>
-                @endif
-                
-            </div>
-
-
-            <div class="form-group {{ $errors->has('resume') ? 'has-error' : '' }}">
-                <label for="key">Résumé</label>
-                <input type="text" name="resume" id="resume" class="form-control" value="{{ old('resume', isset($publication) ? $publication->resume: '') }}" />
-                 @if($errors->has('resume'))
-                    <p class="help-block">
-                        {{ $errors->first('resume') }}
-                    </p>
-                @endif
-             
-            </div>
-            <div class="form-group {{ $errors->has('motcle') ? 'has-error' : '' }}">
-                <label for="key">Mot Clé</label>
-                <input type="text" name="motcle" id="motcle" class="form-control" value="{{ old('motcle', isset($publication) ? $publication->motcle: '') }}" />
-                 @if($errors->has('motcle'))
-                    <p class="help-block">
-                        {{ $errors->first('motcle') }}
-                    </p>
-                @endif
-            
-            </div>   <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
-                <label for="key">ID</label>
-                <input type="text" name="id" id="id" class="form-control" value="{{ old('id', isset($publication) ? $publication->id: '') }}" />
-                 @if($errors->has('id'))
-                    <p class="help-block">
-                        {{ $errors->first('id') }}
-                    </p>
-                @endif
-             
-            </div>
-            </div>
-
-<div  id="conférence" class="choixhide">
-
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
-                <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page : '') }}" />
-                 @if($errors->has('page'))
-                    <p class="help-block">
-                        {{ $errors->first('page') }}
-                    </p>
-                @endif
-               
-            </div>
-
-<div class="form-group {{ $errors->has('titredelivre') ? 'has-error' : '' }}">
-                <label for="key">Titre de livre</label>
-                <input type="text" name="titredelivre" id="titredelivre" class="form-control" value="{{ old('titredelivre', isset($publication) ? $publication->titredelivre: '') }}" />
-                 @if($errors->has('titredelivre'))
-                    <p class="help-block">
-                        {{ $errors->first('titredelivre') }}
-                    </p>
-                @endif
-                
-            </div>
-
-
-            <div class="form-group {{ $errors->has('volume') ? 'has-error' : '' }}">
-                <label for="key">Volume</label>
-                <input type="number" name="volume" id="volume" class="form-control" value="{{ old('volume', isset($publication) ? $publication->volume: '') }}" />
-                 @if($errors->has('volume'))
-                    <p class="help-block">
-                        {{ $errors->first('volume') }}
-                    </p>
-                @endif
-             
-            </div>
-            <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
-                <label for="key">Numéro</label>
-                <input type="number" name="numero" id="numero" class="form-control" value="{{ old('numero', isset($publication) ? $publication->numero: '') }}" />
-                 @if($errors->has('numero'))
-                    <p class="help-block">
-                        {{ $errors->first('numero') }}
-                    </p>
-                @endif
-            
-            </div>
-            <div class="form-group {{ $errors->has('doi') ? 'has-error' : '' }}">
-                <label for="key">Doi</label>
-                <input type="text" name="doi" id="doi" class="form-control" value="{{ old('doi', isset($publication) ? $publication->doi: '') }}" />
-                 @if($errors->has('doi'))
-                    <p class="help-block">
-                        {{ $errors->first('doi') }}
-                    </p>
-                @endif
-</div>
-<div class="form-group {{ $errors->has('annee') ? 'has-error' : '' }}">
-                <label for="annee">Année</label>
-                <input type="date" name="annee" id="annee" class="form-control" value="{{ old('annee', isset($publication) ? $publication->annee: '') }}" />
-                 @if($errors->has('annee'))
-                    <p class="help-block">
-                        {{ $errors->first('annee') }}
-                    </p>
-                @endif
-             
-            </div>
-
-            </div>
-<div  id="Chapitre" class="choixhide">
-
-
-            <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
-                <label for="page">Page</label>
-                <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page : '') }}" />
+                <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page: '') }}" />
                  @if($errors->has('page'))
                     <p class="help-block">
                         {{ $errors->first('page') }}
@@ -376,7 +201,7 @@
             </div>
 
 <div class="form-group {{ $errors->has('itle') ? 'has-error' : '' }}">
-                <label for="key">Itle</label>
+                <label for="key">itle</label>
                 <input type="text" name="itle" id="itle" class="form-control" value="{{ old('itle', isset($publication) ? $publication->itle: '') }}" />
                  @if($errors->has('itle'))
                     <p class="help-block">
@@ -387,7 +212,7 @@
             </div>
 
 <div class="form-group {{ $errors->has('volume') ? 'has-error' : '' }}">
-                <label for="key">Journal</label>
+                <label for="key">Volune</label>
                 <input type="number" name="volume" id="volume" class="form-control" value="{{ old('volume', isset($publication) ? $publication->volume: '') }}" />
                  @if($errors->has('volume'))
                     <p class="help-block">
@@ -467,10 +292,274 @@
                 @endif
 
 </div>
-</div>
-<div  id="livre" class="choixhide">
+                @endif
+                @if($publication->typedocument=='REPORTmaster')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster" selected="selected">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
+                    <p class="help-block">
+                        {{ $errors->first('titre') }}
+                    </p>
+                @endif
+             
+            </div>
+            
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
+            <div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
+                <label for="key">Annee Universiteur</label>
+                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
+                 @if($errors->has('anneeuniverciteur'))
+                    <p class="help-block">
+                        {{ $errors->first('anneeuniverciteur') }}
+                    </p>
+                @endif
+            
+            </div>
+<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
+                <label for="key">Annee de Soutenance</label>
+                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
+                 @if($errors->has('anneesoutenance'))
+                    <p class="help-block">
+                        {{ $errors->first('anneesoutenance') }}
+                    </p>
+                @endif
+                
+            </div>
+            <div class="form-group {{ $errors->has('encadreur') ? 'has-error' : '' }}">
+                <label for="encadreur">Encadreur</label>
+                <select name="encadreur" id="user" class="form-control select2" >
+             
+             @foreach($users as $id => $user)
+                 <option value="{{ $id }}" {{ (isset($publication) && $publication->user ? $publication->user->id : old('encadreur')) == $id ? 'selected' : '' }}>{{ $user }}</option>
+             @endforeach
+         </select>
+         @if($errors->has('encadreur'))
+                    <p class="help-block">
+                        {{ $errors->first('encadreur') }}
+                    </p>
+                @endif
+               
+            </div>
+                @endif
+                @if($publication->typedocument=='THESE')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE" selected="selected">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+               
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
+                    <p class="help-block">
+                        {{ $errors->first('titre') }}
+                    </p>
+                @endif
+             
+            </div>
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
+<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
+                <label for="key">Annee Universiteur</label>
+                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
+                 @if($errors->has('anneeuniverciteur'))
+                    <p class="help-block">
+                        {{ $errors->first('anneeuniverciteur') }}
+                    </p>
+                @endif
+            
+            </div>
+<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
+                <label for="key">Annee de Soutenance</label>
+                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
+                 @if($errors->has('anneesoutenance'))
+                    <p class="help-block">
+                        {{ $errors->first('anneesoutenance') }}
+                    </p>
+                @endif
+                
+            </div>
 
 
+            <div class="form-group {{ $errors->has('resume') ? 'has-error' : '' }}">
+                <label for="key">Résumé</label>
+                <input type="text" name="resume" id="resume" class="form-control" value="{{ old('resume', isset($publication) ? $publication->resume: '') }}" />
+                 @if($errors->has('resume'))
+                    <p class="help-block">
+                        {{ $errors->first('resume') }}
+                    </p>
+                @endif
+             
+            </div>
+            <div class="form-group {{ $errors->has('motcle') ? 'has-error' : '' }}">
+                <label for="key">Mot Clé</label>
+                <input type="text" name="motcle" id="motcle" class="form-control" value="{{ old('motcle', isset($publication) ? $publication->motcle: '') }}" />
+                 @if($errors->has('motcle'))
+                    <p class="help-block">
+                        {{ $errors->first('motcle') }}
+                    </p>
+                @endif
+            
+            </div>   <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
+                <label for="key">ID</label>
+                <input type="text" name="idApp" id="idApp" class="form-control" value="{{ old('idApp', isset($publication) ? $publication->idApp: '') }}" />
+                 @if($errors->has('idApp'))
+                    <p class="help-block">
+                        {{ $errors->first('idApp') }}
+                    </p>
+                @endif
+             
+            </div>
+                @endif
+                @if($publication->typedocument=='HDR')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR" selected="selected">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
+                    <p class="help-block">
+                        {{ $errors->first('titre') }}
+                    </p>
+                @endif
+             
+            </div>
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
+<div class="form-group {{ $errors->has('anneeuniverciteur') ? 'has-error' : '' }}">
+                <label for="key">Annee Universiteur</label>
+                <input type="date" name="anneeuniverciteur" id="anneeuniverciteur" class="form-control" value="{{ old('anneeuniverciteur', isset($publication) ? $publication->anneeuniverciteur: '') }}" />
+                 @if($errors->has('anneeuniverciteur'))
+                    <p class="help-block">
+                        {{ $errors->first('anneeuniverciteur') }}
+                    </p>
+                @endif
+            
+            </div>
+<div class="form-group {{ $errors->has('anneesoutenance') ? 'has-error' : '' }}">
+                <label for="key">Annee de Soutenance</label>
+                <input type="date" name="anneesoutenance" id="anneesoutenance" class="form-control" value="{{ old('anneesoutenance', isset($publication) ? $publication->anneesoutenance: '') }}" />
+                 @if($errors->has('anneesoutenance'))
+                    <p class="help-block">
+                        {{ $errors->first('anneesoutenance') }}
+                    </p>
+                @endif
+                
+            </div>
+
+
+            <div class="form-group {{ $errors->has('resume') ? 'has-error' : '' }}">
+                <label for="key">Résumé</label>
+                <input type="text" name="resume" id="resume" class="form-control" value="{{ old('resume', isset($publication) ? $publication->resume: '') }}" />
+                 @if($errors->has('resume'))
+                    <p class="help-block">
+                        {{ $errors->first('resume') }}
+                    </p>
+                @endif
+             
+            </div>
+            <div class="form-group {{ $errors->has('motcle') ? 'has-error' : '' }}">
+                <label for="key">Mot Clé</label>
+                <input type="text" name="motcle" id="motcle" class="form-control" value="{{ old('motcle', isset($publication) ? $publication->motcle: '') }}" />
+                 @if($errors->has('motcle'))
+                    <p class="help-block">
+                        {{ $errors->first('motcle') }}
+                    </p>
+                @endif
+            
+            </div>   <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
+                <label for="key">ID</label>
+                <input type="text" name="idApp" id="idApp" class="form-control" value="{{ old('idApp', isset($publication) ? $publication->idApp: '') }}" />
+                 @if($errors->has('idApp'))
+                    <p class="help-block">
+                        {{ $errors->first('idApp') }}
+                    </p>
+                @endif
+             
+            </div>
+                @endif
+                @if($publication->typedocument=='livre')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article">Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre"  selected="selected">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+          
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
+                    <p class="help-block">
+                        {{ $errors->first('titre') }}
+                    </p>
+                @endif
+             
+            </div>
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
             <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
                 <label for="page">Page</label>
                 <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page : '') }}" />
@@ -483,7 +572,7 @@
             </div>
 
 <div class="form-group {{ $errors->has('itle') ? 'has-error' : '' }}">
-                <label for="key">Itle</label>
+                <label for="key">itle</label>
                 <input type="text" name="itle" id="itle" class="form-control" value="{{ old('itle', isset($publication) ? $publication->itle: '') }}" />
                  @if($errors->has('itle'))
                     <p class="help-block">
@@ -533,7 +622,127 @@
                     </p>
                 @endif
 </div>
+                @endif
+                @if($publication->typedocument=='conférence')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence" selected="selected">Conférence</option>
+                        <option value="Autre">Autre</option>
+                </select>
+              
+                <div class="form-group {{ $errors->has('titre') ? 'has-error' : '' }}">
+                <label for="key">Titre</label>
+                <input type="text" name="titre" id="titre" class="form-control" value="{{ old('titre', isset($publication) ? $publication->titre : '') }}" />
+                 @if($errors->has('titre'))
+                    <p class="help-block">
+                        {{ $errors->first('titre') }}
+                    </p>
+                @endif
+             
+            </div>
+<div class="form-group {{ $errors->has('fichier') ? 'has-error' : '' }}">
+                <label for="fichier">Fichier</label>
+                <input type="file" id="fichier" name="fichier"  v-on:change="(e) => {this.onChangeFileUpload(e)}" class="form-control" value="{{ old('fichier', isset($publication) ? $publication->fichier : '') }}" />
+                 @if($errors->has('fichier'))
+                    <p class="help-block">
+                        {{ $errors->first('fichier') }}
+                    </p>
+                @endif
+            </div>
+            <div class="form-group {{ $errors->has('page') ? 'has-error' : '' }}">
+                <label for="page">Page</label>
+                <input type="text" name="page" id="page" class="form-control" value="{{ old('page', isset($publication) ? $publication->page : '') }}" />
+                 @if($errors->has('page'))
+                    <p class="help-block">
+                        {{ $errors->first('page') }}
+                    </p>
+                @endif
+               
+            </div>
 
+<div class="form-group {{ $errors->has('titredelivre') ? 'has-error' : '' }}">
+                <label for="key">Titre de livre</label>
+                <input type="text" name="titredelivre" id="titredelivre" class="form-control" value="{{ old('titredelivre', isset($publication) ? $publication->titredelivre: '') }}" />
+                 @if($errors->has('titredelivre'))
+                    <p class="help-block">
+                        {{ $errors->first('titredelivre') }}
+                    </p>
+                @endif
+                
+            </div>
+
+
+            <div class="form-group {{ $errors->has('volume') ? 'has-error' : '' }}">
+                <label for="key">volume</label>
+                <input type="number" name="volume" id="volume" class="form-control" value="{{ old('volume', isset($publication) ? $publication->volume: '') }}" />
+                 @if($errors->has('volume'))
+                    <p class="help-block">
+                        {{ $errors->first('volume') }}
+                    </p>
+                @endif
+             
+            </div>
+            <div class="form-group {{ $errors->has('numero') ? 'has-error' : '' }}">
+                <label for="key">Numéro</label>
+                <input type="number" name="numero" id="numero" class="form-control" value="{{ old('numero', isset($publication) ? $publication->numero: '') }}" />
+                 @if($errors->has('numero'))
+                    <p class="help-block">
+                        {{ $errors->first('numero') }}
+                    </p>
+                @endif
+            
+            </div>
+            <div class="form-group {{ $errors->has('doi') ? 'has-error' : '' }}">
+                <label for="key">Doi</label>
+                <input type="text" name="doi" id="doi" class="form-control" value="{{ old('doi', isset($publication) ? $publication->doi: '') }}" />
+                 @if($errors->has('doi'))
+                    <p class="help-block">
+                        {{ $errors->first('doi') }}
+                    </p>
+                @endif
+</div>
+<div class="form-group {{ $errors->has('annee') ? 'has-error' : '' }}">
+                <label for="annee">Année</label>
+                <input type="date" name="annee" id="annee" class="form-control" value="{{ old('annee', isset($publication) ? $publication->annee: '') }}" />
+                 @if($errors->has('annee'))
+                    <p class="help-block">
+                        {{ $errors->first('annee') }}
+                    </p>
+                @endif
+             
+            </div>
+                @endif
+                @if($publication->typedocument=='Autre')
+                <select name="typedocument" id="choix" class="form-control" >
+                        <option value="Article" >Article</option>
+                        <option value="Poste">Poster</option>
+                        <option value="Chapitre">Chapitre </option>
+                        <option value="REPORTmaster">Rapport master</option>
+                        <option value="THESE">Thèse</option>
+                        <option value="HDR">HDR</option>
+                        <option value="livre">Livre</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="Autre" selected="selected">Autre</option>
+                </select>
+                @endif
+                 @if($errors->has('typedocument'))
+                    <p class="help-block">
+                        {{ $errors->first('typedocument') }}
+                    </p>
+                @endif
+              
+        </div>
+      
+          
+            
+    
+   
 </div>
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">

@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.publications.create") }}">
-               Ajouter Publication
+             <i class="fas fa-user-plus"></i>
             </a>
         </div>
     </div>
@@ -75,7 +75,7 @@
                                                 {{ trans('global.view') }}
                                             </a>
                                         
-                            
+                                           
                                         
                                             <a class="dropdown-item" href="{{ route('admin.publications.edit', $publication->id) }}">
                                                 <i class="fa fa-edit"></i>
@@ -92,7 +92,9 @@
                                                 <i class="fa fa-trash"></i>
                                                 {{ trans('global.delete') }}
                                             </a>
-                                        
+                                            <a class="dropdown-item"  href="{{ route("admin.auteurpublications.create") }}">
+                                            <i class="fas fa-user-plus"></i>Ajouter Auteur 
+                                                </a>
                                     </div>
                                 </div>
                             

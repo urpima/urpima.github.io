@@ -51,9 +51,7 @@ class PublicationController extends Controller
        // $Publication = Publication::create($request->all());
        
         $rules = array(
-            'fichier' => 'required|file|max:2048'
-          
-               
+            'fichier' => 'required|file|max:2048'   
          );
     
          $error = Validator::make($request->all(), $rules);
@@ -83,7 +81,7 @@ class PublicationController extends Controller
                'editeur'      =>  $request->editeur,
                'chapitre'     =>  $request->chapitre,
                'itle'     =>  $request->itle,
-               'isbn'     =>  $request->isbn,
+               'issn'     =>  $request->issn,
                'doi'     => $request->doi,
                'url'     =>  $request->url,
                'anneeuniverciteur'     =>  $request->anneeuniverciteur,
@@ -123,8 +121,10 @@ class PublicationController extends Controller
         return view('admin.publications.show', compact('publication'));
     }
 
-    public function destroy(Publication $publication)
+    public function destroy(Request $request ,$id)
     {
+
+        $publication = Publication::findOrFail($id);
        $publication->delete();
 
         return back()->withSuccess('Task Created Successfully!');

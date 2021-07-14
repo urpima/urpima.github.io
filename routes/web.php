@@ -80,6 +80,7 @@ Route::delete('gallery/destroy', 'ImageController@massDestroy')->name('gallery.m
       // Publications
       Route::delete('publications/destroy', 'PublicationController@massDestroy')->name('publications.massDestroy');
       Route::resource('publications', 'PublicationController');
+      Route::post('publications/{id}', 'PublicationController@destroy');
      // Route::get('/{fichier}', 'HomeController@download');
        // Settings
        Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');

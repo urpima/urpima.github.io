@@ -51,10 +51,10 @@ class AuteurpublicationsController extends Controller
     {
       $users = User::all()->pluck('name', 'id')->prepend('Veuillez sélectionner', '');
 
-      $auteurpublication->load('user');
+     
       $publications = Publication::all()->pluck('titre', 'id')->prepend('Veuillez sélectionner', '');
 
-      $auteurpublication->load('publication');
+      $auteurpublication->load('publication','user');
       return view('admin.auteurpublications.edit', compact('auteurpublication','users','publications'));
     }
 

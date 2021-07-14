@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.projets.create") }}">
-               Ajouter Projet
+            <i class="fas fa-user-plus"></i>
             </a>
         </div>
     </div>
@@ -101,7 +101,9 @@
                                                 <i class="fa fa-trash"></i>
                                                 {{ trans('global.delete') }}
                                             </a>
-                                        
+                                            <a class="dropdown-item" href="{{ route("admin.memberprojets.create") }}">
+                                                 <i class="fas fa-user-plus"></i> Ajouter Members
+                                            </a>
                                     </div>
                                 </div>
                             

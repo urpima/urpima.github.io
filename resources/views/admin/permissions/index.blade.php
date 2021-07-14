@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.permissions.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.permission.title_singular') }}
+            <i class="fas fa-user-plus"></i>
             </a>
         </div>
     </div>

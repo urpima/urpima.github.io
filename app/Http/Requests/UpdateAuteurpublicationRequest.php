@@ -17,10 +17,7 @@ class UpdateAuteurpublicationRequest extends FormRequest
     public function rules()
     {
         return [
-            'publication_id' => [
-                'required',
-                'unique:auteurpublications,publication_id,' . request()->route('auteurpublication')->id,
-            ],
+          
         ];
     }
 }

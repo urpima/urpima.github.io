@@ -65,7 +65,7 @@ p {
 }
 .cta:hover {
 	color: white;
-	background-color: crimson;
+	background-color: #3EC1D5;
 }
 .brand h1 {
 	font-size: 3rem;
@@ -73,7 +73,7 @@ p {
 	color: white;
 }
 .brand h1 span {
-	color: crimson;
+	color: #3EC1D5;
 }
 
 /* Header section */
@@ -145,7 +145,7 @@ p {
 	letter-spacing: initial;
 }
 #header .nav-list ul li:hover a {
-	color: crimson;
+	color: #3EC1D5;
 }
 #header .hamburger {
 	height: 60px;
@@ -253,7 +253,7 @@ p {
 	left: 0;
 	height: 100%;
 	width: 0;
-	background-color: crimson;
+	background-color: #3EC1D5;
 	animation: text_reveal_box 1s ease;
 	animation-delay: 0.5s;
 }
@@ -447,7 +447,7 @@ p {
 	top: 19px;
 	height: 98%;
 	width: 98%;
-	border: 7px solid crimson;
+	border: 7px solid #3EC1D5;
 	z-index: -1;
 }
 /* End About Section */

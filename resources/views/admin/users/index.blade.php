@@ -30,27 +30,15 @@
                         <th>
                             Prénom
                         </th>
-                        <th>
-                            HDR
-                        </th>
-                        <th>
-                            PHD
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
                             Grade
                         </th>
-                        <th>
-                            Spécialité
-                        </th>
-                        <th>
-                            Statut
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
-                        </th>
+                        
+                        
                         <th>
                             {{ trans('cruds.user.fields.roles') }}
                         </th>
@@ -74,27 +62,15 @@
                             <td>
                                 {{ $user->prenom ?? '' }}
                             </td>
-                            <td>
-                                {{ $user->HDR ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->PHD ?? '' }}
-                            </td>
+                            
                             <td>
                                 {{ $user->email ?? '' }}
                             </td>
                             <td>
                                 {{ $user->Grade ?? '' }}
                             </td>
-                            <td>
-                                {{ $user->Spécialité ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->Statut ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->email_verified_at ?? '' }}
-                            </td>
+                           
+                            
                             <td>
                                 @foreach($user->roles as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>

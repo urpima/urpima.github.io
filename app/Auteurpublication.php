@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
-use App\Projet;
+use App\Publication;
 class Auteurpublication extends Model
 {
     use SoftDeletes;
@@ -19,8 +19,6 @@ class Auteurpublication extends Model
     ];
 
     protected $fillable = [
-       
-        
           'publication_id', 
           'chercheur_id', 
         'created_at',
@@ -29,7 +27,7 @@ class Auteurpublication extends Model
     ];
     public function publication()
     {
-        return $this->belongsTo(Projet::class, 'publication_id', 'id');
+        return $this->belongsTo(Publication::class, 'publication_id', 'id');
     }
     public function user()
     {

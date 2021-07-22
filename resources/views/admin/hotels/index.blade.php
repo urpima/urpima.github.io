@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.hotels.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.hotel.title_singular') }}
+                <i class="fas fa-user-plus"></i>
             </a>
         </div>
     </div>
@@ -132,7 +132,7 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('hotel_delete')
+
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
@@ -160,7 +160,7 @@
     }
   }
   dtButtons.push(deleteButton)
-@endcan
+
 
   $.extend(true, $.fn.dataTable.defaults, {
     order: [[ 1, 'desc' ]],

@@ -98,7 +98,7 @@
   <div class="container d-flex">
 
     <div class="logo mr-auto">
-      <h1 class="text-light"><a href="/"><img  src="{{ asset('images/LOBE.png')}}" alt="" ></a></h1>
+      <h1 class="text-light"><a align="left" href="/"><img  src="{{ asset('images/LOBE.png')}}" alt="" ></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     </div>
@@ -124,22 +124,45 @@
         <li><a href="/publication">{{__('translate.publication')}}</a></li>
         <li><a href="/Team">{{__('translate.teams')}}</a></li>
         <li class="active"><a href="/">{{__('translate.home')}}</a></li>
-        
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
       </ul>
     </nav>
     @else
+    
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li class="active"><a href="#header">{{__('translate.home')}}</a></li>
-        <li><a href="/Team">{{__('translate.teams')}}</a></li>
-        <li><a href="/publication">{{__('translate.publication')}}</a></li>
-        <li><a href="/semin">{{__('translate.seminar')}}</a></li>
+        <li ><a href="#header">{{__('translate.home')}}</a></li>
+        <li class="active"><a href="/Team">{{__('translate.teams')}}</a></li>
+        <li ><a href="/publication">{{__('translate.publication')}}</a></li>
+        <li ><a href="/semin">{{__('translate.seminar')}}</a></li>
         <li><a href="/Activite">{{__('translate.activities')}}</a></li>
-        <li><a href="#blog">{{__('translate.PROJECTS')}}</a></li>
-        <li><a href="/gallery">{{__('translate.galleries')}}</a></li>
-        
-        <li><a href="/contact">{{__('translate.contact')}}</a></li>
-        <li><a href="{{ route('login') }}"> {{__('translate.signin')}}</a></li>
+        <li ><a href="/projet">{{__('translate.PROJECTS')}}</a></li>
+        <li ><a href="/gallery">{{__('translate.galleries')}}</a></li>
+        <li ><a href="/contact">{{__('translate.contact')}}</a></li>
+        <li ><a href="{{ route('login') }}"> {{__('translate.signin')}}</a></li>
         <li  class="drop-down"><a href="#"><span>{{app()->getLocale() }}</span> <i class="bi bi-chevron-down"></i></a>
        <ul>
        @foreach (language()->allowed() as $code => $name)
@@ -148,7 +171,6 @@
   </li>
   @endforeach
                             </ul>
-                            
           </li>
       </ul>
     </nav>

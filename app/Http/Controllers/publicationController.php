@@ -14,12 +14,14 @@ use App\Sponsor;
 use App\Faq;
 use App\Price;
 use App\Amenity;
+use App\Auteurpublication;
 class publicationController extends Controller
 {
     public function index()
     {
         //$settings = Setting::pluck('value', 'key');
         $users = user::all();
+        $auteurs = Auteurpublication::all();
         $publications = Publication::with('user')
             ->orderBy('titre', 'asc')
             ->get()
@@ -32,6 +34,6 @@ class publicationController extends Controller
         $prices = Price::with('amenities')->get();
         $amenities = Amenity::with('prices')->get();
 
-        return view('publication', compact( 'users', 'publications', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
+        return view('publication', compact('auteurs', 'users', 'publications', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
     }
 }

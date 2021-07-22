@@ -9,7 +9,7 @@ return [
     'PROJECTS'=>'Projects',
     'seminar'=>'Seminaires',
     'galleries'=>'Galleries',
-    'activities'=>'Activités de recherches',
+    'activities'=>'Activités',
     'lang'=>'lang',
     'reset_password'=>'Réinitialiser le mot de passe',
    'unite'=>'L’unité de recherche «URPIMA» est une unité de recherche implantée au sein du département de Méthodes Quantitatives et Informatique dans les locaux de l’ISCAE. L’unité de recherche a pour mission de contribuer à l’encadrement des étudiants de Master et Doctorat, à la création, la diffusion et la valorisation de la recherche dans le domaine de Mathématiques appliquées et d’informatique. Elle assure également le lien entre la recherche, les formations et l’environnement de l’établissement.
@@ -20,7 +20,7 @@ return [
    'site'=>'Interesting site',
    'lang2'=>'Françqis',
    'contact'=>'Contact',
-   'contact'=>'Contactez-nous',
+   'contact'=>'Contactez-Nous',
    'signin'=>'Se connecter',
    'logout'=>'Se déconnecter',
    //'CONSULTATION'=>'CONSULTATION',

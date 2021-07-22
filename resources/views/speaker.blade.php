@@ -10,7 +10,6 @@
           <h2>Seminaire Details</h2>
           <p>Praesentium ut qui possimus sapiente nulla.</p>
         </div>
-  
         <div class="row">
           <div class="col-md-6">
             <img src="{{ URL::to('/') }}/upload/{{ $speaker->photo }}" alt="{{ $speaker->name }}" class="img-fluid">
@@ -31,6 +30,4 @@
       </div>
     </section>
   </main>
-  @include('sections.sponsors')
-
 @endsection

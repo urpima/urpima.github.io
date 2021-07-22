@@ -6,13 +6,10 @@ use App\Setting;
 use App\Speaker;
 use App\User;
 use App\Schedule;
-use App\Venue;
+use App\Auteurpublication;
 use App\Hotel;
 use App\Gallery;
 use App\Sponsor;
-use App\Faq;
-use App\Price;
-use App\Amenity;
 
 class TeamController extends Controller
 {
@@ -28,7 +25,10 @@ class TeamController extends Controller
     public function view(Speaker $speaker)
     {
         $settings = Setting::pluck('value', 'key');
+        // $auteurs = Auteurpublication::pluck('chercheur_id', 'publication_id');
         
-        return view('speaker', compact('settings', 'speaker'));
+            $publications = Publication::pluck('value', 'key');
+        
+        return view('speaker', compact('settings', 'publications', 'speaker','auteurpublications'));
     }
 }

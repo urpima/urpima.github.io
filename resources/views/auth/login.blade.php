@@ -1,4 +1,3 @@
-
 @extends('layouts.masterapp')
 @section('title','reset password')
 @section('content')
@@ -36,7 +35,9 @@
 	<div class="bg-contact100" >
 		<div class="container-contact100">
 			<div class="wrap-contact100">
-				
+			<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
 			<div>
                     <form class="contact100-form validate-form" method="post" action="{{ route('login') }}">
                     @csrf
@@ -71,9 +72,9 @@
                         </div>                
                 <div class="form-group d-md-flex">
 	            	<div class="w-50">
-		            	<label class="checkbox-wrap checkbox-primary"> {{ __('translate.RememberMe') }}
+		            	<label class="checkbox-wrap checkbox-primary"> 
 									  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-									  <span class="checkmark"></span>
+									  <span class="checkmark">{{ __('translate.RememberMe') }}</span>
 									</label>
 								</div>
 								<div class="w-50 text-md-right">

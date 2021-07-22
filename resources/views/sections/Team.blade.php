@@ -5,7 +5,7 @@
           <div class="section-headline text-center">
             <br>
             <br>
-            <h2>Membre</h2>
+            <h2>Membres</h2>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.hotel.title_singular') }}
+        {{ trans('global.create') }} Gallery
     </div>
 
     <div class="card-body">

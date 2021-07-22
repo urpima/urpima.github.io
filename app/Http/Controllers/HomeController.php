@@ -10,8 +10,10 @@ use App\User;
 use App\Publication;
 use App\Projet;
 use App\Sponsor;
+use App\Auteurpublication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storoage;
+
 class HomeController extends Controller
 {
     public function index()
@@ -30,18 +32,22 @@ class HomeController extends Controller
 
     public function view(Speaker $speaker)
     {
-        $settings = Setting::pluck('value', 'key');
+        
         $sponsors = Sponsor::all();
         
-        return view('speaker', compact('settings', 'speaker', 'sponsors'));
+        return view('speaker', compact('speaker', 'sponsors'));
     }
     public function view2(User $user)
     {
        // $settings = Setting::pluck('value', 'key');
         $publications = Publication::all();
         $projets = Projet::all();
+        $auteurpublications = Auteurpublication::with('publication','user')
+        ->orderBy('chercheur_id', 'asc')
+            ->get()
+            ->groupBy('publication_id');
         
-        return view('user', compact('publications', 'user','projets'));
+        return view('user', compact('auteurpublications','publications', 'user','projets'));
     }
     public function download(Request $request ,$file){  
     

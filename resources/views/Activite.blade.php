@@ -4,7 +4,8 @@
 
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-  @include('sections.Activite')
-  @include('sections.sponsors')
+
+@include('sections.ActiviteAut')
+@include('sections.Activite')
 
 @endsection

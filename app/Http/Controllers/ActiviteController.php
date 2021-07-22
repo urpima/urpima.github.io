@@ -6,40 +6,33 @@ use Illuminate\Http\Request;
 use Response;
 use App\Setting;
 use App\Speaker;
-use App\Schedule;
-use App\Venue;
 use App\Hotel;
 use App\Gallery;
 use App\User;
+use App\Axe;
 use App\Sponsor;
-use App\Faq;
-use App\Price;
 use App\Publication;
 use App\Auteurpublication;
-use App\Amenity;
 use Illuminate\Support\Facades\Storoage;
+
 class ActiviteController extends Controller
 {
     public function index()
     {
-        $Auteurs = Auteurpublication::all();
-        //$Auteurs = Publication::all();
+        $auteurpublications = Auteurpublication::with('publication','user')
+        ->orderBy('chercheur_id', 'asc')
+            ->get()
+            ->groupBy('publication_id');
+        $publications = Publication::all();
+        $users = User::all();
+        $axes = Axe::with('user')
+            ->get();
         $speakers = Speaker::with('axe')
         ->orderBy('start_time', 'asc')
             ->get()
             ->groupBy('day_number');
-        $schedules = Schedule::with('speaker')
-            ->orderBy('start_time', 'asc')
-            ->get()
-            ->groupBy('day_number');
-        $venues = Venue::all();
-        $hotels = Hotel::all();
-        $galleries = Gallery::all();
-        $sponsors = Sponsor::all();
-        $faqs = Faq::all();
-        $prices = Price::with('amenities')->get();
-        $amenities = Amenity::with('prices')->get();
 
-        return view('Activite', compact('Auteurs', 'speakers', 'schedules', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
+        return view('Activite', compact('auteurpublications','axes','users', 'publications','speakers'));
     }
+    
 }

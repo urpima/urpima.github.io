@@ -1,8 +1,8 @@
 <section id="speakers" class="wow fadeInUp">
   <div class="container">
     <div class="section-header">
-      <h2>Seminaire</h2>
-      <p>Here are some of our speakers</p>
+      <h2>Seminaires</h2>
+      <p>Voici notre seminaire</p>
     </div>
 
     <div class="row">

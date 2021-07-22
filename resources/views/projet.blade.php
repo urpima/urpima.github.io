@@ -2,6 +2,6 @@
 @section('title','Projets')
 @section('content')
 
-<link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
+<link rel="stylesheet" href="{{ asset('style3.css')}}">
   @include('sections.projet')
 @endsection

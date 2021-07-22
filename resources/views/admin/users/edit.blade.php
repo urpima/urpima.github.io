@@ -126,9 +126,9 @@
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
               <label for="password">{{ trans('cruds.user.fields.password') }}</label>
-              <div class="input_box">
-              <input type="password" id="password" name="password" class="form-control" value="{{ old('password', isset($user) ? $user->password : '') }}">
-              <i class="fa fa-eye"  id="show_hide"></i></div>
+              
+              <input type="password" id="password" name="password" class="form-control" >
+              
               @if($errors->has('password'))
                   <p class="help-block">
                       {{ $errors->first('password') }}

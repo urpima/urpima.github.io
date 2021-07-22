@@ -12,15 +12,37 @@
         </div>
       </div>
       <div class="col-right">
-        <h1 class="section-title">About <span>me</span></h1>
-        <h2>Front End Developer</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, velit alias eius non illum beatae atque
-          repellat ratione qui veritatis repudiandae adipisci maiores. At inventore necessitatibus deserunt
-          exercitationem cumque earum omnis ipsum rem accusantium quis, quas quia, accusamus provident suscipit magni!
-          Expedita sint ad dolore, commodi labore nihil velit earum ducimus nulla quae nostrum fugit aut, deserunt
-          reprehenderit libero enim!</p>
-        <a href="#" class="cta">Download Resume</a>
-      </div>
+        <h1 class="section-title">About <span>Me</span></h1>
+        <h2>{{ $user->name }} {{ $user->prenom }}</h2>
+        <br>
+        <table>
+          <tr>
+        <td><p>Grade : {{ $user->Grade}}</p></td></tr>
+        <tr><td><p>Spécialité : {{ $user->Spécialité}}</p></td></tr>
+      </table>
+      <h3> Publication : </h3>
+      <br> 
+     <table>
+      <tr><td>
+        
+      @foreach($auteurpublications as $key => $day )
+      <div role="tabpanel" class="col-lg-9 tab-pane fade{{  ' show active'  }}" id="day-{{ $key }}">
+            @foreach($day as $auteurpublication)
+            <div class="row schedule-item">
+            <div class="col-md-10">
+            <a href="#" >
+              <h4><span>{{ \Carbon\Carbon::parse($auteurpublication->publication->annee)->format("Y/M") }}</span>     {{ $auteurpublication->publication->titre}}   </h4>
+              <br>
+             </a> </div>
+            </div>
+          </div>
+            @endforeach
+        </div>
+        @endforeach
+     
+     </td></tr>
+            </table>
+            <h3> Projet : </h3>
     </div>
   </section>
   @endsection
